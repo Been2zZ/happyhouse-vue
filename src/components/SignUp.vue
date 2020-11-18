@@ -1,35 +1,35 @@
-<template>
+    <template>
     <section>
-       <b-container fluid>
-           <br>
-  <b-row class="my-1">
-    <b-col sm="3">
-      <label for="input-none">아이디:</label>
-    </b-col>
-    <b-col sm="9">
-      <b-form-input id="input-none" :state="null" placeholder="No validation"></b-form-input>
-    </b-col>
-  </b-row>
+        <b-field label="Name">
+            <b-input v-model="name"></b-input>
+        </b-field>
 
-  <b-row class="my-1">
-    <b-col sm="3">
-      <label for="input-valid">비밀번호:</label>
-    </b-col>
-    <b-col sm="9">
-      <b-form-input id="input-valid" :state="true" placeholder="Valid input"></b-form-input>
-    </b-col>
-  </b-row>
+        <b-field label="Email"
+            type="is-danger"
+            message="This email is invalid">
+            <b-input type="email"
+                value="john@"
+                maxlength="30">
+            </b-input>
+        </b-field>
 
-  <b-row class="my-1">
-    <b-col sm="3">
-      <label for="input-invalid">이름:</label>
-    </b-col>
-    <b-col sm="9">
-      <b-form-input id="input-invalid" :state="false" placeholder="Invalid input"></b-form-input>
-    </b-col>
-  </b-row>
-</b-container>
-    </section>
+        <b-field label="Username"
+            type="is-success"
+            message="This username is available">
+            <b-input value="johnsilver" maxlength="30"></b-input>
+        </b-field>
+
+        <b-field label="Password">
+            <b-input type="password"
+                value="iwantmytreasure"
+                password-reveal>
+            </b-input>
+        </b-field>
+
+        <b-field label="Message">
+            <b-input maxlength="200" type="textarea"></b-input>
+        </b-field>
+  </section>
 </template>
 
 <script>
@@ -41,3 +41,11 @@
         }
     }
 </script>
+
+<style scoped>
+section {
+  width: 50%;
+  padding-top: 5%;
+  margin:0 auto; 
+}
+</style>

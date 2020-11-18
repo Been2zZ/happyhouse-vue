@@ -6,29 +6,30 @@
       </b-row>
     </b-container> -->
     <div id="b">
-      <b-button id="button" href="/write">게시글 등록</b-button><br>
+      <b-button type="is-primary" outlined id="button" href="/write">게시글 등록</b-button><br>
     </div>
 
     <div>
       <br>
-    <table>
+      <b-table>
+    <!-- <b-table table is-fullwidth> -->
      <col width="10%"><col width="20%"><col width="20%">
-     <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-      </tr>
-     </thead>
-     <tbody>
-       <tr v-for="board in boards" :key="board.num">
-         <td v-html="board.num"></td>
-         <td v-html="board.title" @click="detailBoard(board.num)">
-         </td>
-          <td v-html="board.name"></td>
-       </tr>
-     </tbody>
-   </table>
+     <b-thead>
+      <b-tr>
+        <b-th>번호</b-th>
+        <b-th>제목</b-th>
+        <b-th>작성자</b-th>
+      </b-tr>
+     </b-thead>
+     <b-tbody>
+       <b-tr v-for="board in boards" :key="board.num">
+         <b-td v-html="board.num"></b-td>
+         <b-td v-html="board.title" @click="detailBoard(board.num)">
+         </b-td>
+          <b-td v-html="board.name"></b-td>
+       </b-tr>
+     </b-tbody>
+   </b-table>
     </div>
   </div>
 </template>
@@ -86,20 +87,19 @@ export default {
 </script>
 
 <style scoped>
-table, th, td {
+/* table, th, td {
   border: 1px solid #bcbcbc;
   text-align: center;
 }
 table {
   width: 100%;
-  /* width: "auto"; */
   height: 100%;
   align-self: center;
 }
 thead {
   font-size: x-large;
   text-align: center;
-}
+} */
 #button {
   float: right;
 }

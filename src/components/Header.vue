@@ -1,24 +1,45 @@
 <template>
-    <b-navbar toggleable="lg" type="dark" variant="dark">
-      
-      <b-navbar-brand href="/">Happy House</b-navbar-brand>
+    <b-navbar>
+        <template slot="brand">
+            <b-navbar-item tag="router-link" :to="{ path: '/' }">
+                <img
+                    src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
+                    alt="Lightweight UI components for Vue.js based on Bulma"
+                >
+            </b-navbar-item>
+        </template>
+        <template slot="start">
+            <b-navbar-item href="/housesearch">
+                해피하우스 찾기
+            </b-navbar-item>
+            <b-navbar-item href="/board">
+                선별 진료소
+            </b-navbar-item>
+            <b-navbar-item href="/board">
+                게시판
+            </b-navbar-item>
+            <!-- <b-navbar-dropdown label="Info">
+                <b-navbar-item href="#">
+                    About
+                </b-navbar-item>
+                <b-navbar-item href="#">
+                    Contact
+                </b-navbar-item>
+            </b-navbar-dropdown> --> 
+        </template>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item href="/board">해피하우스 찾기</b-nav-item>
-          <b-nav-item href="/board">근처 병원 정보</b-nav-item>
-          <b-nav-item href="/board">게시판</b-nav-item>
-           <!-- <b-nav-item href="/write">게시물 등록</b-nav-item> -->
-         </b-navbar-nav>
-      </b-collapse>
-      
-      <b-navbar-nav tag="div">
-        <b-button variant="primary" href="/signup"><strong>Sign up</strong></b-button>
-        <b-button variant="outline-primary">Log in</b-button>
-      </b-navbar-nav>
-      
+        <template slot="end">
+            <b-navbar-item tag="div">
+                <div class="buttons">
+                    <a class="button is-primary" href="/signup">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                        Log in
+                    </a>
+                </div>
+            </b-navbar-item>
+        </template>
     </b-navbar>
 </template>
 
