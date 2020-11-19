@@ -1,7 +1,7 @@
 <template>
  <div class="home">
     <!-- <Main /> -->
-    <Menu />
+    <MainPicture />
     <!-- <img alt="Vue logo" src="../assets/logo2.png" /> -->
     </div>
 </template>
@@ -9,13 +9,13 @@
 <script>
 // @ is an alias to /src
 // import Main from '@/components/Main.vue';
-import Menu from '@/components/Menu.vue';
+import MainPicture from '@/components/MainPicture.vue';
 
 export default {
   name: "Home",
   components: {
     // Main,
-    Menu,
+    MainPicture,
   },
 };
 </script>
