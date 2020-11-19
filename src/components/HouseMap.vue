@@ -33,7 +33,7 @@ export default {
       this.lng = vo.lng;
       this.positions.push({
         content:
-          '<div class ="label"></span><span class="center">' +
+          '<div style="padding:5px;text-align:center;width:150px"><span class="center">' +
           vo.houseName +
           '</span></div>',
         latlng: new kakao.maps.LatLng(this.lat, this.lng),
@@ -119,5 +119,10 @@ export default {
 .map {
   width: 100%;
   height: 500px;
+}
+element.style {
+  position: relative;
+  left: 0px;
+  top: 0px;
 }
 </style>

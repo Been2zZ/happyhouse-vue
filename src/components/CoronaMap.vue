@@ -36,7 +36,7 @@ export default {
       this.type.push(vo.type);
       this.positions.push({
         content:
-          '<div class ="label"></span><span class="center">' +
+          '<div style="padding:5px;text-align:center;width:150px"><span class="center">' +
           vo.name +
           '</span></div>',
         latlng: new kakao.maps.LatLng(this.lat, this.lng),
