@@ -7,6 +7,7 @@ import DetailBoard from '@/components/DetailBoard.vue';
 import Mod from '@/views/Mod.vue';
 import HouseSearch from '@/views/HouseSearch.vue';
 import SignUp from '@/components/SignUp.vue';
+import Login from '@/components/Login.vue';
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUp,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login,
   },
 ];
 

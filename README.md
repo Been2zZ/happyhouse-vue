@@ -51,3 +51,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 #### 매물 리뷰
 
 #### 프로필 사진 업로드
+
+# about 만들기
+
+### 로그인 폼
+
+### 회원가입 폼 수정
+
+### 메인화면 변경
