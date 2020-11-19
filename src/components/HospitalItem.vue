@@ -25,7 +25,7 @@
           위치 : {{ hospital.address }} <br />
           전화번호 : {{ hospital.tel }}<br />
           공휴일 운영시간 :
-          {{ hospital.weekdayop == '' ? '없음' : hospital.weekdayop }}<br />
+          {{ hospital.weekdayop == '' ? '휴무' : hospital.weekdayop }}<br />
         </div>
       </div>
     </b-collapse>
