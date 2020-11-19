@@ -36,6 +36,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 스크롤 or 페이징
 
+## 로딩바 추가
+
 ### 카카오 지도 info view 텍스트 가운데
 
 # 로그인 / 회원가입
@@ -46,7 +48,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 어드민 기능 (회원 목록 조회, 회원 탈퇴)
 
-## 코로나 지도
+## ~~코로나 지도~~
 
 #### 매물 리뷰
 
@@ -54,8 +56,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # about 만들기
 
-### 로그인 폼
+### ~~로그인 폼~~
 
-### 회원가입 폼 수정
+### ~~회원가입 폼 수정~~
 
-### 메인화면 변경
+### ~~메인화면 변경~~
+
+https://www.flaticon.com/
