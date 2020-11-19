@@ -9,7 +9,7 @@
       <b-navbar-item href="/housesearch">
         해피하우스 찾기
       </b-navbar-item>
-      <b-navbar-item href="/board">
+      <b-navbar-item href="/coronasearch">
         선별 진료소
       </b-navbar-item>
       <b-navbar-item href="/board">
