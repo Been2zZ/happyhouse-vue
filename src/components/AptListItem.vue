@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="selectApt">
-    <header class="card-header">
+    <header style="height: 50px;" class="card-header">
       <p class="card-header-title">
         {{ apt.houseName }}
       </p>
@@ -30,9 +30,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.img-list {
-  width: 50px;
-}
-</style>
