@@ -9,10 +9,8 @@
   <section>
      <b-field expanded grouped>
             <b-field>
-                <b-select placeholder="시/도" type="search" >
+                <b-select placeholder="시/도" type="search" icon="earth">
                     <option>서울특별시</option>
-                    <option>세종특별자치시</option>
-                    <option>DB에서 가져와서 추가</option>
                 </b-select>
             </b-field>
             <b-field>
