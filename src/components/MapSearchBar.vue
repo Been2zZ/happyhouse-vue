@@ -1,16 +1,9 @@
 <template>
-  <!-- <b-row>
-    <b-col align="left">
-      <input type="text" v-model="text" @keypress.enter="searchText" />
-      <b-button >검색</b-button>
-    </b-col>
-  </b-row> -->
-
   <section>
      <b-field expanded grouped>
             <b-field>
-                <b-select  v-model="sido_selected" @change.native="ChangedGugun" placeholder="시/도" icon="earth" >
-                <option value="" disabled selected hidden>"시/도"</option>
+                <b-select v-model="sido_selected" @change.native="ChangedGugun" icon="earth">
+                <option value="" disabled selected>"시/도"</option>
                     <option v-for="option in sido_options" :key="option.sidoCode" v-bind:value="option.sidoCode">
                       {{option.sidoName}}
                     </option>
@@ -18,6 +11,7 @@
             </b-field>
             <b-field>
                 <b-select v-model="gugun_selected" @change.native="ChangedDong" placeholder="시/군/구" >
+                    <option value="" disabled selected>"시/군/구"</option>
                     <option v-for="option in gugun_options" :key="option.gugunCode" v-bind:value="option.gugunCode">
                       {{option.gugunName}}
                     </option>
@@ -25,13 +19,14 @@
             </b-field>
             <b-field>
                 <b-select  v-model="dong_selected" @change.native="GetHouse"  placeholder="읍/면/동">
+                    <option value="" disabled selected>"읍/면/동"</option>
                     <option v-for="option in dong_options" :key="option.dong" v-bind:value="option.dong">
                       {{option.dong}}
                     </option>
                 </b-select>
             </b-field>
-       <!-- 텍스트 검색 -->
 
+       <!-- 텍스트 검색 -->
       <div id="search">
         <b-field>
        <b-input placeholder="건물명..." expanded></b-input>
@@ -59,6 +54,7 @@ export default {
       gugun_options: [],
       dong_options: [],
       houses: [],
+      dhouses: [],
     };
   },
   methods: {
@@ -70,13 +66,13 @@ export default {
     },
     GetHouse() {
       this.getHouse(this.dong_selected);
+      this.getHouseDetail(this.dong_selected);
     },
     searchSido() {
       http
         .get("/map/sido")
         .then(response => {
           this.sido_options = response.data;
-          console.log(this.selected + " search sido");
           })
         .catch(() => {
           this.errored = true;
@@ -106,8 +102,21 @@ export default {
         .get("/map/house/" + dong)
         .then(response => {
           this.houses = response.data;
-          console.log(this.houses);
+          // console.log(this.houses);
           this.$emit("houseList", this.houses);
+        })
+        .catch(() => {
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    getHouseDetail(dong) {
+      http
+        .get("/detail/dong/" + dong)
+        .then(response => {
+          this.dhouses = response.data;
+          console.log(this.dhouses);
+          this.$emit("dhouseList", this.dhouses);
         })
         .catch(() => {
           this.errored = true;
@@ -123,6 +132,6 @@ export default {
 
 <style>
 #search {
-  float: right;
+  margin-left: auto;
 }
 </style>
