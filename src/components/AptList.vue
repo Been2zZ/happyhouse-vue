@@ -5,7 +5,16 @@
       :key="index"
       :apt="apt"
       @select-apt="selectApt"
+      id="my-list"
+      :per-page="perPage"
+      :current-page="currentPage"
     />
+    <b-pagination
+      v-model="currentPage"
+      pills :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-list"
+    ></b-pagination>
   </div>
 </template>
 
@@ -14,6 +23,13 @@ import AptListItem from '@/components/AptListItem.vue';
 
 export default {
   name: 'AptList',
+  data() {
+    return {
+      perPage: 3,
+      currentPage: 1,
+      rows:this.aptlist.length,
+    }
+  },
   components: {
     AptListItem,
   },
@@ -28,4 +44,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

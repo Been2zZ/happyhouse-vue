@@ -1,14 +1,14 @@
 <template>
   <b-container class="bv-example-row">
     <br />
-    <map-search-bar @search-text="searchText" @houseList="searchDong" />
+    <map-search-bar @search-text="searchText" @houseList="searchDong" @dhouseList="searchDongDetail" />
     <br />
     <b-row>
       <b-col cols="8">
         <house-map :aptlist="apts" />
       </b-col>
       <b-col cols="4">
-        <apt-list :aptlist="apts" @select-apt="selectApt" />
+        <apt-list :aptlist="dapts" />
       </b-col>
     </b-row>
   </b-container>
@@ -34,7 +34,9 @@ export default {
     return {
       boards: [],
       apts: [],
+      dapts: [],
       selectedApt: '',
+      selectedAptDetail: '',
     };
   },
 
@@ -44,7 +46,7 @@ export default {
   //     .get('/map/house/광장동')
   //     .then((response) => {
   //       this.apts = response.data;
-  //       console.log(response);
+  //       // console.log(response);
   //     })
   //     .catch((error) => {
   //       console.log(error);
@@ -55,10 +57,6 @@ export default {
       console.log('>>>>' + text);
       http
         .get('/board/' + text)
-        // .then(response => {
-        //   boards = response.data;
-        //   console.log(this.boards);
-        // })
         .catch((error) => {
           console.log(error);
         });
@@ -66,10 +64,21 @@ export default {
     selectApt: function(apt) {
       this.selectedApt = apt;
     },
+    selectAptDetail: function(dapt) {
+      this.selectedAptDetail = dapt;
+    },
     searchDong: function(houses) {
       this.apts = houses;
-      console.log(this.apts);
+      // console.log(this.apts);
+    },
+    searchDongDetail: function(dhouses) {
+      this.dapts = dhouses;
+      console.log(this.dapts);
     },
   },
 };
 </script>
+
+
+<style scoped>
+</style>
