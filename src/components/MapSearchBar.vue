@@ -10,6 +10,7 @@
      <b-field expanded grouped>
             <b-field>
                 <b-select  v-model="sido_selected" @change.native="ChangedGugun" placeholder="시/도" icon="earth" >
+                <option value="" disabled selected hidden>"시/도"</option>
                     <option v-for="option in sido_options" :key="option.sidoCode" v-bind:value="option.sidoCode">
                       {{option.sidoName}}
                     </option>
@@ -29,12 +30,16 @@
                     </option>
                 </b-select>
             </b-field>
-     <b-field>
+       <!-- 텍스트 검색 -->
+
+      <div id="search">
+        <b-field>
        <b-input placeholder="건물명..." expanded></b-input>
                 <p class="control">
                 <b-button type="is-primary" outlined>Search</b-button>
             </p>
      </b-field>
+      </div>
         </b-field>
         <hr>
     </section>
@@ -117,8 +122,7 @@ export default {
 </script>
 
 <style>
-#i {
-  width: 100%;
-  float: none;
+#search {
+  float: right;
 }
 </style>
