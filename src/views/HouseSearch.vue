@@ -5,7 +5,7 @@
     <br />
     <b-row>
       <b-col cols="8">
-        <house-map />
+        <house-map :aptlist="apts" />
       </b-col>
       <b-col cols="4">
         <apt-list :aptlist="apts" @select-apt="selectApt" />
