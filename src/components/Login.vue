@@ -1,13 +1,14 @@
     <template>
     <section>
-
-        <b-field label="Id">
-            <b-input value="" placeholder="Id를 입력하세요."></b-input>
+        <b-field label="아이디">
+            <b-input value=""></b-input>
         </b-field>
 
-        <b-field label="Password">
-            <b-input value="" placeholder="비밀번호를 입력하세요." type="password"></b-input>
+        <b-field label="비밀번호">
+            <b-input value="" type="password" password-reveal></b-input>
         </b-field>
+
+        <b-button type="is-primary">로그인</b-button>
     </section>
 </template>
 
