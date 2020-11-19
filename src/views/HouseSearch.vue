@@ -1,7 +1,11 @@
 <template>
   <b-container class="bv-example-row">
     <br />
-    <map-search-bar @search-text="searchText" @houseList="searchDong" @dhouseList="searchDongDetail" />
+    <map-search-bar
+      @search-text="searchText"
+      @houseList="searchDong"
+      @dhouseList="searchDongDetail"
+    />
     <br />
     <b-row>
       <b-col cols="8">
@@ -21,7 +25,7 @@ import HouseMap from '@/components/HouseMap.vue';
 import AptList from '@/components/AptList.vue';
 
 export default {
-  name: 'Board',
+  name: 'HouseSearch',
   components: {
     MapSearchBar,
     HouseMap,
@@ -55,11 +59,9 @@ export default {
   methods: {
     searchText: function(text) {
       console.log('>>>>' + text);
-      http
-        .get('/board/' + text)
-        .catch((error) => {
-          console.log(error);
-        });
+      http.get('/board/' + text).catch((error) => {
+        console.log(error);
+      });
     },
     selectApt: function(apt) {
       this.selectedApt = apt;
@@ -73,12 +75,10 @@ export default {
     },
     searchDongDetail: function(dhouses) {
       this.dapts = dhouses;
-      console.log(this.dapts);
+      // console.log(this.dapts);
     },
   },
 };
 </script>
 
-
-<style scoped>
-</style>
+<style scoped></style>

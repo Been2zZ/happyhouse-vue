@@ -7,6 +7,7 @@ import DetailBoard from '@/components/DetailBoard.vue';
 import Mod from '@/views/Mod.vue';
 import HouseSearch from '@/views/HouseSearch.vue';
 import SignUp from '@/components/SignUp.vue';
+import CoronaSearch from '@/views/CoronaSearch.vue';
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/housesearch',
     name: 'HouseSearch',
     component: HouseSearch,
+  },
+  {
+    path: '/coronasearch',
+    name: 'CoronaSearch',
+    component: CoronaSearch,
   },
   {
     path: '/write',

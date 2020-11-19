@@ -5,9 +5,9 @@
         <b-select
           v-model="sido_selected"
           @change.native="ChangedGugun"
-          placeholder="시/도"
           icon="earth"
         >
+          <option value="" disabled selected>"시/도"</option>
           <option
             v-for="option in sido_options"
             :key="option.sidoCode"
@@ -23,6 +23,7 @@
           @change.native="ChangedDong"
           placeholder="시/군/구"
         >
+          <option value="" disabled selected>"시/군/구"</option>
           <option
             v-for="option in gugun_options"
             :key="option.gugunCode"
@@ -46,11 +47,9 @@ export default {
     return {
       sido_selected: 'selected',
       gugun_selected: 'selected',
-      dong_selected: 'selected',
       sido_options: [],
       gugun_options: [],
-      dong_options: [],
-      houses: [],
+      hospitalList: [],
     };
   },
   methods: {
@@ -58,17 +57,13 @@ export default {
       this.searchGugun(this.sido_selected);
     },
     ChangedDong() {
-      this.searchDong(this.gugun_selected);
-    },
-    GetHouse() {
-      this.getHouse(this.dong_selected);
+      this.getHospital(this.gugun_selected);
     },
     searchSido() {
       http
         .get('/map/sido')
         .then((response) => {
           this.sido_options = response.data;
-          console.log(this.selected + ' search sido');
         })
         .catch(() => {
           this.errored = true;
@@ -84,22 +79,13 @@ export default {
         })
         .finally(() => (this.loading = false));
     },
-    searchDong(gugun) {
+    getHospital(gugun) {
       http
-        .get('/map/dong/' + gugun)
-        .then((response) => (this.dong_options = response.data))
-        .catch(() => {
-          this.errored = true;
-        })
-        .finally(() => (this.loading = false));
-    },
-    getHouse(dong) {
-      http
-        .get('/map/house/' + dong)
+        .get('/corona/gugun/' + gugun)
         .then((response) => {
-          this.houses = response.data;
-          console.log(this.houses);
-          this.$emit('houseList', this.houses);
+          this.hospitalList = response.data;
+          // console.log(this.hospitalList);
+          this.$emit('hospital-list', this.hospitalList);
         })
         .catch(() => {
           this.errored = true;
@@ -114,8 +100,7 @@ export default {
 </script>
 
 <style>
-#i {
-  width: 100%;
-  float: none;
+#search {
+  margin-left: auto;
 }
 </style>
