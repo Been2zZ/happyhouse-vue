@@ -62,23 +62,6 @@ export default {
         })
         .finally(() => (this.loading = false));
     },
-    modifyBoard(num){
-      alert(num + "번 글을 수정합니다.");
-      http
-         .post("/modifyBoard/" + num)
-         .then(response => {
-          if (response.data.state == "succ") {
-            // 수정 view 이동
-            this.retrieveCustomers();
-          } else {
-            alert("수정이 불가능 합니다.");
-          }
-        })
-        .catch(() => {
-          this.errored = true;
-        })
-        .finally(() => (this.loading = false));
-    },
   },
   mounted() {
     this.retrieveBoards();
