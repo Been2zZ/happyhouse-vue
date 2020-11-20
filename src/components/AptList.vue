@@ -1,5 +1,14 @@
 <template>
   <div>
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-list"
+    ></b-pagination>
+
+    <p class="mt-3">Current Page: {{ currentPage }}</p>
+
     <apt-list-item
       v-for="(apt, index) in aptlist"
       :key="index"
@@ -9,12 +18,6 @@
       :per-page="perPage"
       :current-page="currentPage"
     />
-    <b-pagination
-      v-model="currentPage"
-      pills :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-list"
-    ></b-pagination>
   </div>
 </template>
 
@@ -26,9 +29,9 @@ export default {
   data() {
     return {
       perPage: 3,
+      dataPerPage: 10,
       currentPage: 1,
-      rows:this.aptlist.length,
-    }
+    };
   },
   components: {
     AptListItem,
@@ -41,8 +44,16 @@ export default {
       this.$emit('select-apt', apt);
     },
   },
+  computed: {
+    rows() {
+      console.log('rows : [' + this.aptlist.length + ']');
+      return this.aptlist.length;
+    },
+    numOfPages() {
+      return Math.ceil(this.aptlist.length / this.dataPerPage);
+    },
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>
