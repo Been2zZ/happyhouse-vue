@@ -13,7 +13,7 @@ export default new Vuex.Store({
   getters: {
     getAccessToken(state) {
       // state.accessToken = localStorage.accessToken;
-      // console.log(state);
+      console.log(state);
       if (state.accessToken === 'null') return false;
       return state.accessToken;
     },
@@ -55,6 +55,9 @@ export default new Vuex.Store({
     LOGOUT(context) {
       context.commit('LOGOUT');
       http.defaults.headers.common['auth-token'] = undefined;
+    },
+    TOKENUPDATE(context, tokens) {
+      context.commit('LOGIN', tokens);
     },
   },
   modules: {},

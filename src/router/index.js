@@ -18,8 +18,9 @@ Vue.use(VueRouter);
 
 const requireAuth = () => (to, from, next) => {
   const nextRoute = to.path;
-
+  console.log('ㅉ같은곳에 들어온거같아요..');
   if (store.getters.getAccessToken) {
+    console.log('ㅉ같은곳에 들어온거같아요..2');
     return next();
   } else next('/login' + nextRoute);
 };

@@ -6,7 +6,11 @@
         <strong>회원 정보 수정 화면</strong>
         <section>
           <b-field label="이름">
-            <b-input name="name" v-model="name" placeholder="이름을 입력하세요."></b-input>
+            <b-input
+              name="name"
+              v-model="name"
+              placeholder="이름을 입력하세요."
+            ></b-input>
           </b-field>
 
           <b-field label="비밀번호">
@@ -63,7 +67,12 @@
             ></b-input>
           </b-field>
 
-          <b-button @click="modMember()" type="submit" name="button" variant="is-primary">
+          <b-button
+            @click="modMember()"
+            type="submit"
+            name="button"
+            variant="is-primary"
+          >
             회원 정보 수정
           </b-button>
         </section>
@@ -75,7 +84,11 @@
       <strong>관리자 정보 수정 화면</strong>
       <section>
         <b-field label="이름">
-          <b-input name="name" v-model="name" placeholder="이름을 입력하세요."></b-input>
+          <b-input
+            name="name"
+            v-model="name"
+            placeholder="이름을 입력하세요."
+          ></b-input>
         </b-field>
 
         <b-field label="비밀번호">
@@ -132,7 +145,12 @@
           ></b-input>
         </b-field>
 
-        <b-button @click="modAdmin()" type="submit" name="button" variant="is-primary">
+        <b-button
+          @click="modAdmin()"
+          type="submit"
+          name="button"
+          variant="is-primary"
+        >
           관리자 정보 수정
         </b-button>
       </section>
@@ -195,6 +213,7 @@ export default {
         .post('member/modify', {
           id: this.user.id,
           pw: this.pw,
+          name: this.name,
           email: this.email,
           phoneNum: this.phoneNum,
           address: this.address,
@@ -202,12 +221,11 @@ export default {
           addressDetail: this.addressDetail,
         })
         .then((response) => {
-          if (response.data.state == 'succ') {
-            alert('회원 정보 수정이 완료 되었습니다.');
-            this.$router.push('/');
-          } else {
-            alert('회원 정보 수정에 실패 되었습니다');
-          }
+          console.log(response);
+          this.$store
+            .dispatch('TOKENUPDATE', response)
+            .then(() => this.$router.replace('/'))
+            .catch(({ message }) => (this.msg = message));
         });
       this.submitted = true;
     },
@@ -216,6 +234,7 @@ export default {
         .post('member/modify', {
           id: this.user.id,
           pw: this.pw,
+          name: this.name,
           email: this.email,
           phoneNum: this.phoneNum,
           address: this.address,
