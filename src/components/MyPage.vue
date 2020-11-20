@@ -51,15 +51,26 @@
               <b-col cols="2"></b-col>
               <b-col cols="2" align-self="end">유저정보</b-col
               ><b-col cols="4" align-self="start">{{
-                user.isAdmin == 0 ? '일반' : '관리자'
+                user.isAdmin == 0 ? '회원' : '관리자'
               }}</b-col>
               <b-col cols="2"></b-col>
             </b-row>
           </b-container>
           <hr class="my-4" />
 
-          <b-button variant="primary" href="#" class="mr-1">정보수정</b-button>
-          <b-button variant="danger" href="#" @click="deleteMember">회원탈퇴</b-button>
+          <!-- 일반 이용자 -->
+          <div v-if="user.isAdmin === 0">
+            <b-button variant="primary" href="#" class="mr-1">회원 정보 수정</b-button>
+            <b-button variant="danger" href="#" @click.native="deleteMember">회원 탈퇴</b-button>
+          </div>
+
+          <!-- 관리자 -->
+          <div v-if="user.isAdmin === 1">
+            <b-button variant="primary" href="#" class="mr-1">관리자 정보 수정</b-button>
+            <router-link class="button danger" to="/memberlist">
+              회원 관리
+            </router-link>
+          </div>
         </b-jumbotron>
       </b-col>
       <b-col></b-col>
@@ -75,6 +86,7 @@ export default {
   data() {
     return {
       user: null,
+      submitted: false,
     };
   },
   created() {
@@ -88,7 +100,18 @@ export default {
       });
   },
   methods: {
-    deleteMember() {},
+    deleteMember() {
+      http.get('member/delete').then((response) => {
+        if (response.data.state == 'succ') {
+          alert('회원 탈퇴가 완료 되었습니다.');
+          this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+          this.$router.push('/');
+        } else {
+          alert('회원 탈퇴가 실패하였습니다.');
+        }
+      });
+      this.submitted = true;
+    },
   },
 };
 </script>

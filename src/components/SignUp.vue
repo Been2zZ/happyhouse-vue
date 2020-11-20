@@ -22,7 +22,13 @@
     </b-field>
 
     <b-field label="전화번호">
-      <b-input type="tel" name="tel" v-model="tel" value="" placeholder="전화번호를 입력하세요.">
+      <b-input
+        type="tel"
+        name="tel"
+        v-model="phoneNum"
+        value=""
+        placeholder="전화번호를 입력하세요."
+      >
       </b-input>
     </b-field>
 
@@ -51,7 +57,7 @@
       <b-input
         maxlength="100"
         name="address_detail"
-        v-model="address_detail"
+        v-model="addressDetail"
         type="textarea"
         placeholder="ex. 유성구 봉명동"
       ></b-input>
@@ -72,10 +78,10 @@ export default {
       id: '',
       pw: '',
       name: '',
-      tel: '',
+      phoneNum: '',
       email: '',
       address: '',
-      address_detail: '',
+      addressDetail: '',
       submitted: false,
       loading: true,
       errored: false,
@@ -95,7 +101,7 @@ export default {
         alert('이름을 입력하세요.');
         return;
       }
-      if (this.tel == '') {
+      if (this.phoneNum == '') {
         alert('전화번호를 입력하세요.');
         return;
       }
@@ -107,7 +113,7 @@ export default {
         alert('주소를 입력하세요.');
         return;
       }
-      if (this.address_detail == '') {
+      if (this.addressDetail == '') {
         alert('상세 주소를 입력하세요.');
         return;
       }
@@ -118,16 +124,17 @@ export default {
           pw: this.pw,
           name: this.name,
           email: this.email,
-          tel: this.tel,
+          phoneNum: this.phoneNum,
           address: this.address,
-          address_detail: this.address_detail,
+          addressDetail: this.addressDetail,
         })
         .then((response) => {
           if (response.data.state == 'succ') {
             alert('회원 가입이 완료 되었습니다.');
             this.$router.push('/');
           } else {
-            alert('게시물을 등록을 실패 하였습니다.');
+            // succ 말고 pk 중복인 경우 제어 변수 sql문에 추가 후, 검사
+            alert('중복된 아이디 값입니다.');
           }
         });
       this.submitted = true;

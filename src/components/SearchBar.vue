@@ -11,9 +11,14 @@
               <option value="">작성자</option>
             </b-select>
           </b-field>
-          <b-input placeholder="검색어 입력" expanded></b-input>
+          <b-input
+            v-model="input_text"
+            @keypress.enter.native="GetBoard"
+            placeholder="검색어..."
+            expanded
+          ></b-input>
           <p class="control">
-            <b-button type="is-primary" outlined>Search</b-button>
+            <b-button type="is-primary" @click.native="GetBoard" outlined>Search</b-button>
           </p>
         </b-field>
       </div>
@@ -27,7 +32,11 @@ export default {
   data() {
     return {
       isPublic: true,
+      selected: '',
     };
+  },
+  methods: {
+    GetBoard() {},
   },
 };
 </script>

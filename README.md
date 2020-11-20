@@ -40,9 +40,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### ~~카카오 지도 info view 텍스트 가운데~~
 
-# 로그인 / 회원가입 (50%)
+# ~~로그인 / 회원가입 (50%)~~
 
-## 마이페이지 - 회원 정보 수정 / 탈퇴
+## 마이페이지 - 회원 정보 수정 / ~~탈퇴~~
 
 ## 게시판 권한 수정 + 폼
 
@@ -65,5 +65,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ##### 동네지수 만들기
 
 ### 검색화면에서 keypress 동작하게 만들기
+
+### 로그인 정보 불일치 -> 알림 팝업
+
+### 게시판 컨트롤러 추가
+
+# 로그인 후 마이페이지 / 로그아웃 버튼 디자인 변경
 
 https://www.flaticon.com/

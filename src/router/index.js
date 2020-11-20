@@ -11,6 +11,7 @@ import CoronaSearch from '@/views/CoronaSearch.vue';
 import Login from '@/components/Login.vue';
 import store from '../store';
 import MyPage from '@/components/MyPage.vue';
+import MemberList from '@/components/MemberList.vue';
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,14 @@ const requireAuth = () => (to, from, next) => {
   if (store.getters.getAccessToken) {
     return next();
   } else next('/login' + nextRoute);
+};
+
+// 현재 페이지 갱신시 오류 처리 -> 로그인 유지 안됌 !!!
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(() => {
+    return window.location.reload();
+  });
 };
 
 const routes = [
@@ -80,6 +89,11 @@ const routes = [
     name: 'MyPage',
     component: MyPage,
     beforeEnter: requireAuth(),
+  },
+  {
+    path: '/memberlist',
+    name: 'MemberList',
+    component: MemberList,
   },
 ];
 
