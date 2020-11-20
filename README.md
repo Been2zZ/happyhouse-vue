@@ -62,4 +62,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### ~~메인화면 변경~~
 
+##### 동네지수 만들기
+
 https://www.flaticon.com/

@@ -26,7 +26,23 @@
     </template>
 
     <template slot="end">
-      <b-navbar-item tag="div">
+      <b-navbar-item tag="div" v-if="getAccessToken">
+        <div class="buttons">
+          <b-nav-item
+            ><b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar
+            >{{ getUserName }}({{ getUserId }})님 환영합니다.</b-nav-item
+          >
+
+          <router-link class="button is-success" to="/me">
+            <strong>My page</strong>
+          </router-link>
+          <a class="button is-danger" @click.prevent="onClickLogout">
+            Log Out
+          </a>
+        </div>
+      </b-navbar-item>
+
+      <b-navbar-item tag="div" v-else>
         <div class="buttons">
           <a class="button is-primary" href="/signup">
             <strong>Sign up</strong>
@@ -41,7 +57,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-  name: 'Header',
+  data() {
+    return {
+      isLogin: false,
+    };
+  },
+  computed: {
+    ...mapGetters(['getAccessToken', 'getUserId', 'getUserName']),
+  },
+  methods: {
+    onClickLogout() {
+      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+    },
+  },
 };
 </script>
