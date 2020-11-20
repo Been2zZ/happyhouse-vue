@@ -7,7 +7,6 @@
     <div>
       <br>
       <b-table>
-    <!-- <b-table table is-fullwidth> -->
      <col width="10%"><col width="20%"><col width="20%">
      <b-thead>
       <b-tr>
@@ -17,15 +16,28 @@
         <b-th>작성시간</b-th>
       </b-tr>
      </b-thead>
-     <b-tbody>
-       <b-tr v-for="board in boards" :key="board.num">
+       <div v-if="boardList === null">
+         <b-tbody>
+         <b-tr v-for="board in boards" :key="board.num">
          <b-td v-html="board.num"></b-td>
          <b-td v-html="board.title" @click="detailBoard(board.num)">
          </b-td>
           <b-td v-html="board.id"></b-td>
           <b-td v-html="board.date"></b-td>
        </b-tr>
-     </b-tbody>
+       </b-tbody>
+       </div>
+       <div v-if="boardList !== null">
+         <b-tbody>
+       <b-tr v-for="board in boardList" :key="board.num">
+         <b-td v-html="board.num"></b-td>
+         <b-td v-html="board.title" @click="detailBoard(board.num)">
+         </b-td>
+          <b-td v-html="board.id"></b-td>
+          <b-td v-html="board.date"></b-td>
+       </b-tr>
+       </b-tbody>
+       </div>
    </b-table>
     </div>
   </div>
@@ -36,10 +48,10 @@
 import http from "../http-common";
 export default {
   name: 'BoardList',
+  props: ['boardList'],
  data() {
     return {
       upHere: false,
-      emps: [],
       loading: true,
       errored: false,
       boards : [],
@@ -53,7 +65,7 @@ export default {
     retrieveBoards() {
       http
         .get("/findAllBoards")
-        .then(response => (this.boards = response.data))
+        .then(response => (this.boardList = response.data))
         .catch(() => {
           this.errored = true;
         })
