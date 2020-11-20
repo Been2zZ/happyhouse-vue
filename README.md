@@ -30,6 +30,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Do list
 
+# 게시글 등록
+
 ### 폰트 변경
 
 ### 관심 매물 등록
@@ -44,7 +46,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## ~~마이페이지 / 탈퇴~~
 
-# 회원 정보 수정
+# ~~회원 정보 수정~~
 
 ## 게시판 권한 수정 + 폼
 
@@ -66,20 +68,22 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ##### 동네지수 만들기
 
-### 검색화면에서 keypress 동작하게 만들기
-
-### 로그인 정보 불일치 -> 알림 팝업
+### ~~검색화면에서 keypress 동작하게 만들기~~
 
 ### ~~게시판 컨트롤러 추가~~
 
 # 로그인 후 마이페이지 / 로그아웃 버튼 디자인 변경
 
+## 예외처리
+
 ## 회원가입 아이디 중복 -> 알림
+
+### 로그인 정보 불일치 -> 이미 존재하는 아이디 입니다.
 
 ### 날짜 형식 변경 (년월일만)
 
-## 게시글 수정시 기존 글 폼에 남ㄱ아있게..?
+## 게시글 수정시 기존 글 폼에 남아있게
 
-# 게시글 등록
+# 로그인 토큰 관리
 
-https://www.flaticon.com/
+### 아이콘 : https://www.flaticon.com/
