@@ -76,4 +76,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 회원가입 아이디 중복 -> 알림
 
+### 날짜 형식 변경 (년월일만)
+
+## 게시글 수정시 기존 글 폼에 남ㄱ아있게..?
+
+# 게시글 등록
+
 https://www.flaticon.com/

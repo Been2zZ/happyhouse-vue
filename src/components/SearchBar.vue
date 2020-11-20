@@ -6,9 +6,9 @@
         <b-field>
           <b-field>
             <b-select v-model="selected">
-              <option value="전체" disabled selected>전체</option>
-              <option value="">제목</option>
-              <option value="">작성자</option>
+              <option value="전체" selected>전체</option>
+              <option value="title">제목</option>
+              <option value="writer">작성자</option>
             </b-select>
           </b-field>
           <b-input
@@ -18,9 +18,7 @@
             expanded
           ></b-input>
           <p class="control">
-            <b-button type="is-primary" @click.native="GetBoard" outlined
-              >Search</b-button
-            >
+            <b-button type="is-primary" @click.native="GetBoard" outlined>Search</b-button>
           </p>
         </b-field>
       </div>
@@ -29,6 +27,8 @@
 </template>
 
 <script>
+import http from '../http-common';
+
 export default {
   name: 'SearchBar',
   data() {
@@ -36,12 +36,56 @@ export default {
       input_text: '',
       isPublic: true,
       selected: '',
-      input_text: '',
     };
   },
   methods: {
     GetBoard() {
-      this.$emit('search-text', this.input_text);
+      // option으로 선택한 값 : 제목 or 작성자
+      this.getBoard(this.selected);
+      this.input_text = '';
+    },
+
+    getBoard(selected) {
+      if (selected == 'title') {
+        // 제목
+        this.getBoardTitle(this.input_text);
+      } else if (selected == 'writer') {
+        // 작성자
+        this.getBoardWriter(this.input_text);
+      } else {
+        this.getBoardTotal();
+        console.log('전체 검색');
+      }
+    },
+    getBoardTotal() {
+      // 전체 검색
+      http
+        .get('/findAllBoards')
+        .then((response) => {
+          this.boards = response.data;
+          this.$emit('boardList', this.boards);
+        })
+        .catch(() => {
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    getBoardTitle(input_text) {
+      // 제목 검색
+      http
+        .get('/board/' + input_text)
+        .then((response) => {
+          this.boards = response.data;
+          this.$emit('boardList', this.boards);
+        })
+        .catch(() => {
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    getBoardWriter(input_text) {
+      // 작성자 검색
+      console.log(input_text);
     },
   },
 };

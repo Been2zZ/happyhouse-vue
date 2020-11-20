@@ -1,16 +1,16 @@
 <template>
   <b-container class="bv-example-row">
     <br />
-    <search-bar @search-text="searchText" />
+    <search-bar @boardList="searchboardList" />
     <br />
-    <board-list :boards="boards" />
+    <board-list :boardList="boardList" />
   </b-container>
 </template>
 
 <script>
 import SearchBar from '@/components/SearchBar.vue';
 import BoardList from '@/components/BoardList.vue';
-import http from '../http-common';
+// import http from '../http-common';
 
 export default {
   name: 'Board',
@@ -20,21 +20,13 @@ export default {
   },
   data() {
     return {
-      boards: [],
+      boardList: [],
     };
   },
   methods: {
-    searchText: function(text) {
-      console.log('>>>>' + text);
-      http
-        .get('/board/' + text)
-        .then((response) => {
-          this.boards = response.data;
-          console.log(this.boards);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    searchboardList: function(boards) {
+      this.boardList = boards;
+      // console.log(this.dapts);
     },
   },
 };
