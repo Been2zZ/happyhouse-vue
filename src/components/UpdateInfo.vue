@@ -193,6 +193,7 @@ export default {
 
       http
         .post('member/modify', {
+          id: this.user.id,
           pw: this.pw,
           email: this.email,
           phoneNum: this.phoneNum,
@@ -213,6 +214,7 @@ export default {
     modAdmin() {
       http
         .post('member/modify', {
+          id: this.user.id,
           pw: this.pw,
           email: this.email,
           phoneNum: this.phoneNum,

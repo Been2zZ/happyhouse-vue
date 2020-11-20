@@ -68,7 +68,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 로그인 정보 불일치 -> 알림 팝업
 
-### 게시판 컨트롤러 추가
+### ~~게시판 컨트롤러 추가~~
 
 # 로그인 후 마이페이지 / 로그아웃 버튼 디자인 변경
 
