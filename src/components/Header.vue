@@ -6,22 +6,32 @@
       </b-navbar-item>
     </template>
     <template slot="start">
-      <b-navbar-item href="/housesearch">
-        해피하우스 찾기
-      </b-navbar-item>
-      <b-navbar-item href="/coronasearch">
-        선별 진료소
-      </b-navbar-item>
-      <b-navbar-item href="/board">
-        게시판
-      </b-navbar-item>
-      <b-navbar-dropdown label="Info">
-        <b-navbar-item href="#">
-          About
+      <router-link to="/housesearch" style="margin: auto;">
+        <b-navbar-item>
+          <strong>해피하우스 찾기</strong>
         </b-navbar-item>
-        <b-navbar-item href="#">
-          Contact
+      </router-link>
+      <router-link to="/coronasearch" style="margin: auto;">
+        <b-navbar-item>
+          <strong>선별 진료소</strong>
         </b-navbar-item>
+      </router-link>
+      <router-link to="/board" style="margin: auto;">
+        <b-navbar-item>
+          <strong>게시판</strong>
+        </b-navbar-item>
+      </router-link>
+      <b-navbar-dropdown label="Info" style="font-weight: bold;">
+        <router-link to="#">
+          <b-navbar-item>
+            About
+          </b-navbar-item>
+        </router-link>
+        <router-link to="#">
+          <b-navbar-item>
+            Contact
+          </b-navbar-item>
+        </router-link>
       </b-navbar-dropdown>
     </template>
 

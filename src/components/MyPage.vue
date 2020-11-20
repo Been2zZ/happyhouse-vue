@@ -59,7 +59,7 @@
           <hr class="my-4" />
 
           <b-button variant="primary" href="#" class="mr-1">정보수정</b-button>
-          <b-button variant="danger" href="#" @click="deleteMember">회원탈퇴</b-button>
+          <b-button variant="danger" href="#" @click.native="deleteMember">회원탈퇴</b-button>
         </b-jumbotron>
       </b-col>
       <b-col></b-col>
@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       user: null,
+      submitted: false,
     };
   },
   created() {
@@ -88,7 +89,18 @@ export default {
       });
   },
   methods: {
-    deleteMember() {},
+    deleteMember() {
+      http.get('member/delete').then((response) => {
+        if (response.data.state == 'succ') {
+          alert('회원 탈퇴가 완료 되었습니다.');
+          this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+          this.$router.push('/');
+        } else {
+          alert('회원 탈퇴가 실패하였습니다.');
+        }
+      });
+      this.submitted = true;
+    },
   },
 };
 </script>
