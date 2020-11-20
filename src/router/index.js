@@ -12,6 +12,7 @@ import Login from '@/components/Login.vue';
 import store from '../store';
 import MyPage from '@/components/MyPage.vue';
 import MemberList from '@/components/MemberList.vue';
+import UpdateInfo from '@/components/UpdateInfo.vue';
 
 Vue.use(VueRouter);
 
@@ -89,11 +90,18 @@ const routes = [
     name: 'MyPage',
     component: MyPage,
     beforeEnter: requireAuth(),
+    props: true,
   },
   {
     path: '/memberlist',
     name: 'MemberList',
     component: MemberList,
+  },
+  {
+    path: '/updateinfo/:user',
+    name: 'UpdateInfo',
+    component: UpdateInfo,
+    props: true,
   },
 ];
 

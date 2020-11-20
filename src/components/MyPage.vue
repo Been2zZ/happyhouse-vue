@@ -60,13 +60,17 @@
 
           <!-- 일반 이용자 -->
           <div v-if="user.isAdmin === 0">
-            <b-button variant="primary" href="#" class="mr-1">회원 정보 수정</b-button>
+            <router-link class="button danger" :to="{ name: 'UpdateInfo', params: { user: user } }">
+              회원 정보 수정
+            </router-link>
             <b-button variant="danger" href="#" @click.native="deleteMember">회원 탈퇴</b-button>
           </div>
 
           <!-- 관리자 -->
           <div v-if="user.isAdmin === 1">
-            <b-button variant="primary" href="#" class="mr-1">관리자 정보 수정</b-button>
+            <router-link class="button danger" to="/updateinfo">
+              관리자 정보 수정
+            </router-link>
             <router-link class="button danger" to="/memberlist">
               회원 관리
             </router-link>
