@@ -6,9 +6,7 @@
         <b-jumbotron>
           <template #header>My Page</template>
 
-          <template #lead>
-            내 정보 확인페이지입니다.
-          </template>
+          <template #lead> 내 정보 확인페이지입니다. </template>
 
           <hr class="my-4" />
 
@@ -61,25 +59,19 @@
           <hr class="my-4" />
 
           <b-button variant="primary" href="#" class="mr-1">정보수정</b-button>
-          <b-button variant="danger" href="#">회원탈퇴</b-button>
+          <b-button variant="danger" href="#" @click="deleteMember">회원탈퇴</b-button>
         </b-jumbotron>
       </b-col>
       <b-col></b-col>
     </b-row>
   </b-container>
-  <!-- <h2>내정보보기</h2>
-    이름 : {{ user.username }}<br />
-    아이디 : {{ user.userid }}<br />
-    이메일 : {{ user.email }}<br />
-    주소 : {{ user.address }}<br />
-    가입일 : {{ user.joindate }}<br />
-  </div> -->
 </template>
 
 <script>
 import http from '../http-common';
 
 export default {
+  name: 'MyPage',
   data() {
     return {
       user: null,
@@ -94,6 +86,9 @@ export default {
       .catch(() => {
         this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/'));
       });
+  },
+  methods: {
+    deleteMember() {},
   },
 };
 </script>

@@ -33,7 +33,7 @@
             >{{ getUserName }}({{ getUserId }})님 환영합니다.</b-nav-item
           >
 
-          <router-link class="button is-success" to="/me">
+          <router-link class="button is-success" to="/mypage">
             <strong>My page</strong>
           </router-link>
           <a class="button is-danger" @click.prevent="onClickLogout">
