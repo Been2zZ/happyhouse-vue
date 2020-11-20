@@ -12,7 +12,16 @@
         <house-map :aptlist="apts" />
       </b-col>
       <b-col cols="4">
-        <apt-list :aptlist="dapts" />
+        <b-pagination
+          v-model="currentPage"
+          :total-rows="rows"
+          :per-page="perPage"
+          aria-controls="my-list"
+        ></b-pagination>
+
+        <p class="mt-3">Current Page: {{ currentPage }}</p>
+
+        <apt-list :aptlist="dapts" id="my-list" :per-page="perPage" :current-page="currentPage" />
       </b-col>
     </b-row>
   </b-container>
@@ -41,21 +50,10 @@ export default {
       dapts: [],
       selectedApt: '',
       selectedAptDetail: '',
+      perPage: 3,
+      currentPage: 1,
     };
   },
-
-  // created: function() {
-  //   // 후에 응답받는걸로 변경해야함.
-  //   http
-  //     .get('/map/house/광장동')
-  //     .then((response) => {
-  //       this.apts = response.data;
-  //       // console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // },
   methods: {
     searchText: function(text) {
       console.log('>>>>' + text);
@@ -76,6 +74,12 @@ export default {
     searchDongDetail: function(dhouses) {
       this.dapts = dhouses;
       // console.log(this.dapts);
+    },
+  },
+  computed: {
+    rows() {
+      console.log('rows : [' + this.apts.length + ']');
+      return this.apts.length;
     },
   },
 };
