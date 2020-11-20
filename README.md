@@ -64,4 +64,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ##### 동네지수 만들기
 
+### 검색화면에서 keypress 동작하게 만들기
+
 https://www.flaticon.com/
