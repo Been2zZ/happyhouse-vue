@@ -35,11 +35,17 @@
       </b-field>
 
       <!-- 텍스트 검색 -->
+      <!-- enter 검색 안됌 -->
       <div id="search">
         <b-field>
-          <b-input placeholder="건물명..." expanded></b-input>
+          <b-input
+            v-model="input_text"
+            @keyup.enter="submit"
+            placeholder="건물명..."
+            expanded
+          ></b-input>
           <p class="control">
-            <b-button type="is-primary" outlined>Search</b-button>
+            <b-button type="is-primary" @click.native="GetHouseName" outlined>Search</b-button>
           </p>
         </b-field>
       </div>
@@ -58,6 +64,7 @@ export default {
       sido_selected: 'selected',
       gugun_selected: 'selected',
       dong_selected: 'selected',
+      input_text: '',
       sido_options: [],
       gugun_options: [],
       dong_options: [],
@@ -75,6 +82,10 @@ export default {
     GetHouse() {
       this.getHouse(this.dong_selected);
       this.getHouseDetail(this.dong_selected);
+    },
+    GetHouseName() {
+      this.getHouseName(this.input_text);
+      this.getHouseNameDetail(this.input_text);
     },
     searchSido() {
       http
@@ -121,6 +132,32 @@ export default {
     getHouseDetail(dong) {
       http
         .get('/detail/dong/' + dong)
+        .then((response) => {
+          this.dhouses = response.data;
+          // console.log(this.dhouses);
+          this.$emit('dhouseList', this.dhouses);
+        })
+        .catch(() => {
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    getHouseName(name) {
+      http
+        .get('/map/name/' + name)
+        .then((response) => {
+          this.houses = response.data;
+          // console.log(this.houses);
+          this.$emit('houseList', this.houses);
+        })
+        .catch(() => {
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
+    },
+    getHouseNameDetail(name) {
+      http
+        .get('/detail/name/' + name)
         .then((response) => {
           this.dhouses = response.data;
           console.log(this.dhouses);
