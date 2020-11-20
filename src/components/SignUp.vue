@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 <template>
   <section>
     <b-field label="아이디">

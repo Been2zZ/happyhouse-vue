@@ -1,59 +1,72 @@
 <template>
-  <div>
-    <b-pagination
-      v-model="currentPage"
-      :total-rows="rows"
-      :per-page="perPage"
-      aria-controls="my-list"
-    ></b-pagination>
+  <section>
+    <b-table
+      :data="aptlist"
+      ref="table"
+      paginated
+      per-page="5"
+      detailed
+      detail-key="no"
+      :opened-detailed="defaultOpenedDetails"
+      :show-detail-icon="showDetailIcon"
+      aria-next-label="Next page"
+      aria-previous-label="Previous page"
+      aria-page-label="Page"
+      aria-current-label="Current page"
+    >
+      <b-table-column field="houseName" label="house Name" sortable v-slot="props">
+        <template v-if="showDetailIcon">
+          {{ props.row.houseName }}
+          {{ props.row.type == 1 ? ' 아파트 ' : ' 주택(연립 다세대) ' }}
+          {{ props.row.floor }}층
+        </template>
+        <template v-else>
+          <a @click="props.toggleDetails(props.row)">
+            {{ props.row.houseName }}
+          </a>
+        </template>
+      </b-table-column>
 
-    <p class="mt-3">Current Page: {{ currentPage }}</p>
-
-    <apt-list-item
-      v-for="(apt, index) in aptlist"
-      :key="index"
-      :apt="apt"
-      @select-apt="selectApt"
-      id="my-list"
-      :per-page="perPage"
-      :current-page="currentPage"
-    />
-  </div>
+      <template slot="detail" slot-scope="props">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong> 위치 : {{ props.row.dong }} {{ props.row.jibun }}번지<br /> </strong>
+                평수 : {{ props.row.area }}평<br />
+                가격 : {{ props.row.dealAmount }}만원<br />
+                준공 : {{ props.row.buildYear }}년<br />
+              </p>
+            </div>
+          </div>
+        </article>
+      </template>
+    </b-table>
+  </section>
 </template>
 
 <script>
-import AptListItem from '@/components/AptListItem.vue';
+// import AptListItem from '@/components/AptListItem.vue';
 
 export default {
   name: 'AptList',
   data() {
     return {
-      perPage: 3,
-      dataPerPage: 10,
-      currentPage: 1,
+      defaultOpenedDetails: [1],
+      showDetailIcon: true,
     };
   },
   components: {
-    AptListItem,
+    // AptListItem,
   },
   props: {
     aptlist: Array,
   },
-  methods: {
-    selectApt: function(apt) {
-      this.$emit('select-apt', apt);
-    },
-  },
-  computed: {
-    rows() {
-      console.log('rows : [' + this.aptlist.length + ']');
-      return this.aptlist.length;
-    },
-    numOfPages() {
-      return Math.ceil(this.aptlist.length / this.dataPerPage);
-    },
-  },
 };
 </script>
 
-<style></style>
+<style>
+span {
+  margin: auto;
+}
+</style>

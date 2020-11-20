@@ -1,27 +1,14 @@
 <template>
   <b-container class="bv-example-row">
     <br />
-    <map-search-bar
-      @search-text="searchText"
-      @houseList="searchDong"
-      @dhouseList="searchDongDetail"
-    />
+    <map-search-bar @houseList="searchDong" @dhouseList="searchDongDetail" />
     <br />
     <b-row>
       <b-col cols="8">
         <house-map :aptlist="apts" />
       </b-col>
       <b-col cols="4">
-        <b-pagination
-          v-model="currentPage"
-          :total-rows="rows"
-          :per-page="perPage"
-          aria-controls="my-list"
-        ></b-pagination>
-
-        <p class="mt-3">Current Page: {{ currentPage }}</p>
-
-        <apt-list :aptlist="dapts" id="my-list" :per-page="perPage" :current-page="currentPage" />
+        <apt-list :aptlist="dapts" />
       </b-col>
     </b-row>
   </b-container>
@@ -29,7 +16,6 @@
 
 <script>
 import MapSearchBar from '@/components/MapSearchBar.vue';
-import http from '../http-common';
 import HouseMap from '@/components/HouseMap.vue';
 import AptList from '@/components/AptList.vue';
 
@@ -50,17 +36,9 @@ export default {
       dapts: [],
       selectedApt: '',
       selectedAptDetail: '',
-      perPage: 3,
-      currentPage: 1,
     };
   },
   methods: {
-    searchText: function(text) {
-      console.log('>>>>' + text);
-      http.get('/board/' + text).catch((error) => {
-        console.log(error);
-      });
-    },
     selectApt: function(apt) {
       this.selectedApt = apt;
     },
@@ -74,12 +52,6 @@ export default {
     searchDongDetail: function(dhouses) {
       this.dapts = dhouses;
       // console.log(this.dapts);
-    },
-  },
-  computed: {
-    rows() {
-      console.log('rows : [' + this.apts.length + ']');
-      return this.apts.length;
     },
   },
 };
