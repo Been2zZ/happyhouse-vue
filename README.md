@@ -38,7 +38,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 로딩바 추가
 
-### 카카오 지도 info view 텍스트 가운데
+### ~~카카오 지도 info view 텍스트 가운데~~
 
 # 로그인 / 회원가입
 
@@ -61,5 +61,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### ~~회원가입 폼 수정~~
 
 ### ~~메인화면 변경~~
+
+##### 동네지수 만들기
 
 https://www.flaticon.com/

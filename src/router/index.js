@@ -9,8 +9,18 @@ import HouseSearch from '@/views/HouseSearch.vue';
 import SignUp from '@/components/SignUp.vue';
 import CoronaSearch from '@/views/CoronaSearch.vue';
 import Login from '@/components/Login.vue';
+import store from "../store";
+import Me from "@/components/Me.vue";
 
 Vue.use(VueRouter);
+
+const requireAuth = () => (to, from, next) => {
+  const nextRoute = to.path;
+
+  if (store.getters.getAccessToken) {
+    return next();
+  } else next("/login" + nextRoute);
+};
 
 const routes = [
   {
@@ -60,6 +70,17 @@ const routes = [
     name: 'login',
     component: Login,
   },
+  {
+    path: "/login/:nextRoute",
+    name: "LoginNextRoute",
+    component: Login
+  },
+  {
+    path: "/me",
+    name: "Me",
+    component: Me,
+    beforeEnter: requireAuth()
+  }
 ];
 
 const router = new VueRouter({
