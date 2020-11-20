@@ -72,4 +72,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # 로그인 후 마이페이지 / 로그아웃 버튼 디자인 변경
 
+## 회원가입 아이디 중복 -> 알림
+
 https://www.flaticon.com/
