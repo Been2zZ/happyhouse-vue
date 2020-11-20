@@ -34,7 +34,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 관심 매물 등록
 
-## 스크롤 or 페이징
+## ~~스크롤 or 페이징~~
 
 ## 로딩바 추가
 
@@ -42,11 +42,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # ~~로그인 / 회원가입 (50%)~~
 
-## 마이페이지 - 회원 정보 수정 / ~~탈퇴~~
+## ~~마이페이지 / 탈퇴~~
+
+# 회원 정보 수정
 
 ## 게시판 권한 수정 + 폼
 
-## 어드민 기능 (회원 목록 조회, 회원 탈퇴)
+## ~~어드민 기능 (회원 목록 조회, 회원 탈퇴)~~
 
 ## ~~코로나 지도~~
 

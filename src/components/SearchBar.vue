@@ -33,6 +33,7 @@ export default {
     return {
       isPublic: true,
       selected: '',
+      input_text: '',
     };
   },
   methods: {
