@@ -1,10 +1,5 @@
 <template>
   <div>
-    <!-- <b-container class="bv-example-row bv-example-row-flex-cols"> 
-      <b-row>
-       <b-col align-self="end"><b-button id="b" href="/write">게시글 등록</b-button></b-col>
-      </b-row>
-    </b-container> -->
     <div id="b">
       <b-button type="is-primary" outlined id="button" href="/write">게시글 등록</b-button><br>
     </div>
@@ -18,7 +13,8 @@
       <b-tr>
         <b-th>번호</b-th>
         <b-th>제목</b-th>
-        <b-th>작성자</b-th>
+        <b-th>아이디</b-th>
+        <b-th>작성시간</b-th>
       </b-tr>
      </b-thead>
      <b-tbody>
@@ -26,7 +22,8 @@
          <b-td v-html="board.num"></b-td>
          <b-td v-html="board.title" @click="detailBoard(board.num)">
          </b-td>
-          <b-td v-html="board.name"></b-td>
+          <b-td v-html="board.id"></b-td>
+          <b-td v-html="board.date"></b-td>
        </b-tr>
      </b-tbody>
    </b-table>
