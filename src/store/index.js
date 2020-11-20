@@ -59,3 +59,9 @@ export default new Vuex.Store({
   },
   modules: {},
 });
+const enhanceAccessToeken = () => {
+  const { accessToken } = localStorage;
+  if (!accessToken) return;
+  http.defaults.headers.common['auth-token'] = localStorage.accessToken;
+};
+enhanceAccessToeken();
