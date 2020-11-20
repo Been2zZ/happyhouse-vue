@@ -6,16 +6,18 @@
       <tr>
         <th>번호</th>
         <th>제목</th>
-        <th>작성자</th>
+        <th>아이디</th>
         <th>내용</th>
+        <th>작성시간</th>
       </tr>
      </thead>
      <tbody>
        <tr>
           <td v-html="dboard.num"></td>
           <td v-html="dboard.title"></td>
-          <td v-html="dboard.name"></td>
+          <td v-html="dboard.id"></td>
           <td v-html="dboard.content"></td>
+          <td v-html="dboard.date"></td>
        </tr>
      </tbody>
    </table>

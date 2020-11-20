@@ -3,7 +3,7 @@
     <br />
     <search-bar @search-text="searchText" />
     <br />
-    <board-list />
+    <board-list :boards="boards" />
   </b-container>
 </template>
 
@@ -28,10 +28,10 @@ export default {
       console.log('>>>>' + text);
       http
         .get('/board/' + text)
-        // .then(response => {
-        //   boards = response.data;
-        //   console.log(this.boards);
-        // })
+        .then((response) => {
+          this.boards = response.data;
+          console.log(this.boards);
+        })
         .catch((error) => {
           console.log(error);
         });

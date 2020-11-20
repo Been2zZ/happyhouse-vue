@@ -18,7 +18,9 @@
             expanded
           ></b-input>
           <p class="control">
-            <b-button type="is-primary" @click.native="GetBoard" outlined>Search</b-button>
+            <b-button type="is-primary" @click.native="GetBoard" outlined
+              >Search</b-button
+            >
           </p>
         </b-field>
       </div>
@@ -31,13 +33,16 @@ export default {
   name: 'SearchBar',
   data() {
     return {
+      input_text: '',
       isPublic: true,
       selected: '',
       input_text: '',
     };
   },
   methods: {
-    GetBoard() {},
+    GetBoard() {
+      this.$emit('search-text', this.input_text);
+    },
   },
 };
 </script>
