@@ -133,7 +133,8 @@ export default {
             alert('회원 가입이 완료 되었습니다.');
             this.$router.push('/');
           } else {
-            alert('게시물을 등록을 실패 하였습니다.');
+            // succ 말고 pk 중복인 경우 제어 변수 sql문에 추가 후, 검사
+            alert('중복된 아이디 값입니다.');
           }
         });
       this.submitted = true;

@@ -70,4 +70,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 게시판 컨트롤러 추가
 
+# 로그인 후 마이페이지 / 로그아웃 버튼 디자인 변경
+
 https://www.flaticon.com/

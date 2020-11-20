@@ -35,12 +35,11 @@
       </b-field>
 
       <!-- 텍스트 검색 -->
-      <!-- enter 검색 안됌 -->
       <div id="search">
         <b-field>
           <b-input
             v-model="input_text"
-            @keyup.enter="submit"
+            @keypress.enter.native="GetHouseName"
             placeholder="건물명..."
             expanded
           ></b-input>

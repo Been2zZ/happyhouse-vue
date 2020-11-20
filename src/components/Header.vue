@@ -1,9 +1,12 @@
 <template>
   <b-navbar>
     <template slot="brand">
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
-        <img src="../assets/happylogo.png" alt="happy house logo" />
-      </b-navbar-item>
+      <!-- 로고 (home) 클릭 시 로그인 정보 유실!! -->
+      <router-link to="/" style="margin: auto;">
+        <b-navbar-item>
+          <img src="../assets/happylogo.png" alt="happy house logo" />
+        </b-navbar-item>
+      </router-link>
     </template>
     <template slot="start">
       <router-link to="/housesearch" style="margin: auto;">
@@ -38,10 +41,11 @@
     <template slot="end">
       <b-navbar-item tag="div" v-if="getAccessToken">
         <div class="buttons">
-          <b-nav-item
-            ><b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar
-            >{{ getUserName }}({{ getUserId }})님 환영합니다.</b-nav-item
-          >
+          <!-- <b-nav-item> -->
+          <!-- 이니셜 첫 글자 -->
+          <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
+          {{ getUserName }}({{ getUserId }})님 환영합니다.
+          <!-- </b-nav-item> -->
 
           <router-link class="button is-success" to="/mypage">
             <strong>My page</strong>
