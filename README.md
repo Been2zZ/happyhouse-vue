@@ -68,4 +68,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 로그인 정보 불일치 -> 알림 팝업
 
+### 게시판 컨트롤러 추가
+
 https://www.flaticon.com/
