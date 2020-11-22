@@ -96,7 +96,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 환
 
-- 로그인 토큰 관리**
+- ~~로그인 토큰 관리**~~
 
 - ~~날짜 형식 변경 (년월일만)~~
 
