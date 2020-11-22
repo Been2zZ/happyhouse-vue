@@ -8,8 +8,9 @@
           <b-field label="이름">
             <b-input
               name="name"
-              v-model="name"
+              v-model="user.name"
               placeholder="이름을 입력하세요."
+              value="허허허허허"
             ></b-input>
           </b-field>
 
@@ -18,7 +19,7 @@
               type="password"
               value=""
               name="pw"
-              v-model="pw"
+              v-model="user.pw"
               placeholder="비밀번호를 입력하세요."
               password-reveal
             >
@@ -29,8 +30,7 @@
             <b-input
               type="tel"
               name="tel"
-              v-model="phoneNum"
-              value=""
+              v-model="user.phoneNum"
               placeholder="전화번호를 입력하세요."
             >
             </b-input>
@@ -40,8 +40,7 @@
             <b-input
               type="email"
               name="email"
-              v-model="email"
-              value=""
+              v-model="user.email"
               placeholder="이메일을 입력하세요."
             >
             </b-input>
@@ -51,7 +50,7 @@
             <b-input
               maxlength="100"
               name="address"
-              v-model="address"
+              v-model="user.address"
               type="text"
               placeholder="ex. 대전광역시"
             ></b-input>
@@ -61,7 +60,7 @@
             <b-input
               maxlength="100"
               name="address_detail"
-              v-model="addressDetail"
+              v-model="user.addressDetail"
               type="textarea"
               placeholder="ex. 유성구 봉명동"
             ></b-input>
@@ -86,7 +85,7 @@
         <b-field label="이름">
           <b-input
             name="name"
-            v-model="name"
+            v-model="user.name"
             placeholder="이름을 입력하세요."
           ></b-input>
         </b-field>
@@ -107,7 +106,7 @@
           <b-input
             type="tel"
             name="tel"
-            v-model="phoneNum"
+            v-model="user.phoneNum"
             value=""
             placeholder="전화번호를 입력하세요."
           >
@@ -118,7 +117,7 @@
           <b-input
             type="email"
             name="email"
-            v-model="email"
+            v-model="user.email"
             value=""
             placeholder="이메일을 입력하세요."
           >
@@ -129,7 +128,7 @@
           <b-input
             maxlength="100"
             name="address"
-            v-model="address"
+            v-model="user.address"
             type="text"
             placeholder="ex. 대전광역시"
           ></b-input>
@@ -139,7 +138,7 @@
           <b-input
             maxlength="100"
             name="address_detail"
-            v-model="addressDetail"
+            v-model="user.addressDetail"
             type="textarea"
             placeholder="ex. 유성구 봉명동"
           ></b-input>
@@ -166,12 +165,6 @@ export default {
   props: ['user'],
   data() {
     return {
-      pw: '',
-      name: '',
-      phoneNum: '',
-      email: '',
-      address: '',
-      addressDetail: '',
       submitted: false,
       loading: true,
       errored: false,
@@ -209,37 +202,26 @@ export default {
         return;
       }
 
-      http
-        .post('member/modify', {
-          id: this.user.id,
-          pw: this.pw,
-          name: this.name,
-          email: this.email,
-          phoneNum: this.phoneNum,
-          address: this.address,
-          isAdmin: 0,
-          addressDetail: this.addressDetail,
-        })
-        .then((response) => {
-          console.log(response);
-          this.$store
-            .dispatch('TOKENUPDATE', response)
-            .then(() => this.$router.replace('/'))
-            .catch(({ message }) => (this.msg = message));
-        });
+      http.post('member/modify', this.user).then((response) => {
+        console.log(response);
+        this.$store
+          .dispatch('TOKENUPDATE', response)
+          .then(() => this.$router.replace('/'))
+          .catch(({ message }) => (this.msg = message));
+      });
       this.submitted = true;
     },
     modAdmin() {
       http
         .post('member/modify', {
           id: this.user.id,
-          pw: this.pw,
-          name: this.name,
-          email: this.email,
-          phoneNum: this.phoneNum,
-          address: this.address,
+          pw: this.user.pw,
+          name: this.user.name,
+          email: this.user.email,
+          phoneNum: this.user.phoneNum,
+          address: this.user.address,
           isAdmin: 1,
-          addressDetail: this.addressDetail,
+          addressDetail: this.user.addressDetail,
         })
         .then((response) => {
           if (response.data.state == 'succ') {
