@@ -1,7 +1,9 @@
 <template>
   <div>
     <div id="b">
-      <b-button type="is-primary" outlined id="button" href="/write">게시글 등록</b-button><br>
+      <router-link to="/write" style="float: right;">
+        <b-button type="is-primary" outlined id="button">게시글 등록</b-button><br>
+      </router-link>
     </div>
 
     <div>

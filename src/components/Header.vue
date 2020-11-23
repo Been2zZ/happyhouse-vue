@@ -25,7 +25,7 @@
         </b-navbar-item>
       </router-link>
       <b-navbar-dropdown label="Info" style="font-weight: bold;">
-        <router-link to="#">
+        <router-link to="/about">
           <b-navbar-item>
             About
           </b-navbar-item>
@@ -47,10 +47,10 @@
           {{ getUserName }}({{ getUserId }})님 환영합니다.
           <!-- </b-nav-item> -->
 
-          <router-link class="button is-success" to="/mypage">
+          <router-link class="button is-primary" to="/mypage">
             <strong>My page</strong>
           </router-link>
-          <a class="button is-danger" @click.prevent="onClickLogout">
+          <a class="button is-light" @click.prevent="onClickLogout">
             Log Out
           </a>
         </div>

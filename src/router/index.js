@@ -13,6 +13,7 @@ import store from '../store';
 import MyPage from '@/components/MyPage.vue';
 import MemberList from '@/components/MemberList.vue';
 import UpdateInfo from '@/components/UpdateInfo.vue';
+import About from '@/views/About.vue';
 
 Vue.use(VueRouter);
 
@@ -102,6 +103,11 @@ const routes = [
     name: 'UpdateInfo',
     component: UpdateInfo,
     props: true,
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
   },
 ];
 
