@@ -76,7 +76,22 @@ export default {
   components: {},
   methods: {
     removeStarApt(no) {
-      console.log(no);
+      http
+        .post('/star/delete', {
+          aptNo: no,
+          userId: this.$store.state.userId,
+        })
+        .then((response) => {
+          if (response.data.state == 'succ') {
+            alert('관심 매물 삭제가 완료 되었습니다.');
+            // 현재 페이지 갱신
+            // this.$router.push('/starapt');
+            this.$router.go(this.$router.currentRoute);
+          } else {
+            alert('관심 매물 삭제를 실패하였습니다.');
+          }
+        });
+      this.submitted = true;
     },
     retrieveBoards() {
       http
