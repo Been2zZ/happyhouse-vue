@@ -40,13 +40,12 @@
 
     <template slot="end">
       <b-navbar-item tag="div" v-if="getAccessToken">
-        <div class="buttons">
-          <!-- <b-nav-item> -->
-          <!-- 이니셜 첫 글자 -->
+        <!-- 이니셜 첫 글자 -->
+        <div style="margin : left;">
           <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
-          {{ getUserName }}({{ getUserId }})님 환영합니다.
-          <!-- </b-nav-item> -->
-
+          <strong>{{ getUserName }} 님 </strong>
+        </div>
+        <div class="buttons">
           <router-link class="button is-primary" to="/mypage">
             <strong>My page</strong>
           </router-link>
