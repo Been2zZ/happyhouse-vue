@@ -95,7 +95,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Do list v2
 
-- 게시판 제목 마우스 올려놨을시 밑줄 + 이동할수 있는 손표시
+- 게시판 제목 마우스 올려놨을시 밑줄 + ~~이동할수 있는 손표시~~
 
 - 메인페이지 화면 사진전환하다가 사라지는 현상 수정해야함(보니깐 부트스트랩과 buefy의 충돌때문인것같음.)
 
