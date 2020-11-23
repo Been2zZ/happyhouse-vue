@@ -24,14 +24,18 @@
           </b-table-column>
           <b-table-column field="title" label="제목" numeric centered v-slot="props">
             <div v-if="props.row.type === 1">
-              <a @click="detailBoard(props.row.num)">
-                <strong>[공지] {{ props.row.title }}</strong>
-              </a>
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  <strong>[공지] {{ props.row.title }}</strong>
+                </a>
+              </b-tooltip>
             </div>
             <div v-if="props.row.type === 0">
-              <a @click="detailBoard(props.row.num)">
-                {{ props.row.title }}
-              </a>
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  {{ props.row.title }}
+                </a>
+              </b-tooltip>
             </div>
           </b-table-column>
           <b-table-column field="id" label="아이디" width="100" numeric centered v-slot="props">
@@ -60,14 +64,18 @@
           </b-table-column>
           <b-table-column field="title" label="제목" numeric centered v-slot="props">
             <div v-if="props.row.type === 1">
-              <a @click="detailBoard(props.row.num)">
-                <strong>[공지] {{ props.row.title }}</strong>
-              </a>
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  <strong>[공지] {{ props.row.title }}</strong>
+                </a>
+              </b-tooltip>
             </div>
             <div v-if="props.row.type === 0">
-              <a @click="detailBoard(props.row.num)">
-                {{ props.row.title }}
-              </a>
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  {{ props.row.title }}
+                </a>
+              </b-tooltip>
             </div>
           </b-table-column>
           <b-table-column field="id" label="아이디" width="100" numeric centered v-slot="props">
