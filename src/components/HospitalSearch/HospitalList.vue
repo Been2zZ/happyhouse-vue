@@ -1,15 +1,11 @@
 <template>
   <div>
-    <hospital-item
-      v-for="(hospital, index) in hospitalList"
-      :key="index"
-      :hospital="hospital"
-    />
+    <hospital-item v-for="(hospital, index) in hospitalList" :key="index" :hospital="hospital" />
   </div>
 </template>
 
 <script>
-import HospitalItem from '@/components/HospitalItem.vue';
+import HospitalItem from '@/components/HospitalSearch/HospitalItem.vue';
 export default {
   name: 'HospitalList',
   data() {

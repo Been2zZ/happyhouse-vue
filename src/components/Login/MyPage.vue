@@ -38,9 +38,7 @@
             <b-row>
               <b-col cols="2"></b-col>
               <b-col cols="2" align-self="end">상세주소</b-col
-              ><b-col cols="4" align-self="start">{{
-                user.addressDetail
-              }}</b-col>
+              ><b-col cols="4" align-self="start">{{ user.addressDetail }}</b-col>
               <b-col cols="2"></b-col>
             </b-row>
             <b-row>
@@ -62,15 +60,10 @@
 
           <!-- 일반 이용자 -->
           <div v-if="user.isAdmin === 0">
-            <router-link
-              class="button danger"
-              :to="{ name: 'UpdateInfo', params: { user: user } }"
-            >
+            <router-link class="button danger" :to="{ name: 'UpdateInfo', params: { user: user } }">
               회원 정보 수정
             </router-link>
-            <b-button variant="danger" href="#" @click.native="deleteMember"
-              >회원 탈퇴</b-button
-            >
+            <b-button variant="danger" href="#" @click.native="deleteMember">회원 탈퇴</b-button>
           </div>
 
           <!-- 관리자 -->
@@ -94,7 +87,7 @@
 </template>
 
 <script>
-import http from '../http-common';
+import http from '@/http-common';
 
 export default {
   name: 'MyPage',
@@ -120,9 +113,7 @@ export default {
       http.get('member/delete').then((response) => {
         if (response.data.state == 'succ') {
           alert('회원 탈퇴가 완료 되었습니다.');
-          this.$store
-            .dispatch('LOGOUT')
-            .then(() => this.$router.replace('/').catch(() => {}));
+          this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
           this.$router.push('/');
         } else {
           alert('회원 탈퇴가 실패하였습니다.');

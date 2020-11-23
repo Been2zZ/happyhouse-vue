@@ -7,9 +7,7 @@
 <script>
 export default {
   mounted() {
-    window.kakao && window.kakao.maps
-      ? this.initMap()
-      : this.addKakaoMapScript();
+    window.kakao && window.kakao.maps ? this.initMap() : this.addKakaoMapScript();
   },
   props: {
     hospitalList: Array,
@@ -45,8 +43,8 @@ export default {
       var moveLatLon = new kakao.maps.LatLng(this.lat, this.lng);
       this.map.panTo(moveLatLon);
 
-      var imageSrc = require('../assets/hospital_pin.png');
-      var clinicSrc = require('../assets/clinic_pin.png');
+      var imageSrc = require('@/assets/hospital_pin.png');
+      var clinicSrc = require('@/assets/clinic_pin.png');
       // 마커 사이즈
       var imageSize = new kakao.maps.Size(32, 32);
       // 마커 이미지를 생성합니다
@@ -72,11 +70,7 @@ export default {
           'mouseover',
           makeOverListener(this.map, marker, infowindow)
         );
-        kakao.maps.event.addListener(
-          marker,
-          'mouseout',
-          makeOutListener(infowindow)
-        );
+        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       }
       // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
       function makeOverListener(map, marker, infowindow) {

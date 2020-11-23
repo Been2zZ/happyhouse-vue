@@ -6,11 +6,7 @@
       ><strong> 정보 수정 화면</strong>
       <section>
         <b-field label="이름">
-          <b-input
-            name="name"
-            v-model="user.name"
-            placeholder="이름을 입력하세요."
-          ></b-input>
+          <b-input name="name" v-model="user.name" placeholder="이름을 입력하세요."></b-input>
         </b-field>
 
         <b-field label="비밀번호">
@@ -65,12 +61,7 @@
           ></b-input>
         </b-field>
 
-        <b-button
-          @click="modMember()"
-          type="submit"
-          name="button"
-          variant="is-primary"
-        >
+        <b-button @click="modMember()" type="submit" name="button" variant="is-primary">
           {{ user.isAdmin == 0 ? '회원' : '관리자' }} 정보 수정
         </b-button>
       </section>
@@ -79,7 +70,7 @@
 </template>
 
 <script>
-import http from '../http-common';
+import http from '@/http-common';
 
 export default {
   name: 'UpdateInfo',

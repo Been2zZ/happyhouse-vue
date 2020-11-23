@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import SearchBar from '@/components/SearchBar.vue';
-import BoardList from '@/components/BoardList.vue';
+import SearchBar from '@/components/Board/SearchBar.vue';
+import BoardList from '@/components/Board/BoardList.vue';
 // import http from '../http-common';
 
 export default {

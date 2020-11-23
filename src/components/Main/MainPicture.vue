@@ -19,7 +19,7 @@
 export default {
   methods: {
     getImg(value) {
-      return require(`../assets/apt0${value + 1}.jpg`);
+      return require(`@/assets/apt0${value + 1}.jpg`);
     },
   },
 };

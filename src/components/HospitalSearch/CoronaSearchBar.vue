@@ -2,11 +2,7 @@
   <section>
     <b-field expanded grouped>
       <b-field>
-        <b-select
-          v-model="sido_selected"
-          @change.native="ChangedGugun"
-          icon="earth"
-        >
+        <b-select v-model="sido_selected" @change.native="ChangedGugun" icon="earth">
           <option value="" disabled selected>"시/도"</option>
           <option
             v-for="option in sido_options"
@@ -18,11 +14,7 @@
         </b-select>
       </b-field>
       <b-field>
-        <b-select
-          v-model="gugun_selected"
-          @change.native="ChangedDong"
-          placeholder="시/군/구"
-        >
+        <b-select v-model="gugun_selected" @change.native="ChangedDong" placeholder="시/군/구">
           <option value="" disabled selected>"시/군/구"</option>
           <option
             v-for="option in gugun_options"
@@ -39,7 +31,7 @@
 </template>
 
 <script>
-import http from '../http-common';
+import http from '@/http-common';
 
 export default {
   name: 'CoronaSearchBar',

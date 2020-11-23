@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import CoronaSearchBar from '@/components/CoronaSearchBar.vue';
-import CoronaMap from '@/components/CoronaMap.vue';
-import HospitalList from '@/components/HospitalList.vue';
+import CoronaSearchBar from '@/components/HospitalSearch/CoronaSearchBar.vue';
+import CoronaMap from '@/components/HospitalSearch/CoronaMap.vue';
+import HospitalList from '@/components/HospitalSearch/HospitalList.vue';
 
 export default {
   name: 'CoronaSearch',

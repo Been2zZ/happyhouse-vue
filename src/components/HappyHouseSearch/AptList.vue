@@ -46,8 +46,6 @@
 </template>
 
 <script>
-// import AptListItem from '@/components/AptListItem.vue';
-
 export default {
   name: 'AptList',
   data() {

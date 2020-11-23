@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import MapSearchBar from '@/components/MapSearchBar.vue';
-import HouseMap from '@/components/HouseMap.vue';
-import AptList from '@/components/AptList.vue';
+import MapSearchBar from '@/components/HappyHouseSearch/MapSearchBar.vue';
+import HouseMap from '@/components/HappyHouseSearch/HouseMap.vue';
+import AptList from '@/components/HappyHouseSearch/AptList.vue';
 
 export default {
   name: 'HouseSearch',

@@ -4,7 +4,7 @@
       <!-- 로고 (home) 클릭 시 로그인 정보 유실!! -->
       <router-link to="/" style="margin: auto;">
         <b-navbar-item>
-          <img src="../assets/happylogo.png" alt="happy house logo" />
+          <img src="@/assets/happylogo.png" alt="happy house logo" />
         </b-navbar-item>
       </router-link>
     </template>

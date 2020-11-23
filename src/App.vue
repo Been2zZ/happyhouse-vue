@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    
+
     <!-- 3. 보여주기 -->
     <router-view />
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 //1. 사용할 컴포넌트 불러오기.
-import Header from '@/components/Header.vue';
+import Header from '@/components/Main/Header.vue';
 
 export default {
   name: 'App',
@@ -47,6 +47,4 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
-
 </style>

@@ -1,19 +1,21 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '../store';
+
 import Home from '../views/Home.vue';
 import Board from '@/views/Board.vue';
 import Write from '@/views/Write.vue';
-import DetailBoard from '@/components/DetailBoard.vue';
 import Mod from '@/views/Mod.vue';
-import HouseSearch from '@/views/HouseSearch.vue';
-import SignUp from '@/components/SignUp.vue';
-import CoronaSearch from '@/views/CoronaSearch.vue';
-import Login from '@/components/Login.vue';
-import store from '../store';
-import MyPage from '@/components/MyPage.vue';
-import MemberList from '@/components/MemberList.vue';
-import UpdateInfo from '@/components/UpdateInfo.vue';
 import About from '@/views/About.vue';
+import HouseSearch from '@/views/HouseSearch.vue';
+import CoronaSearch from '@/views/CoronaSearch.vue';
+
+import DetailBoard from '@/components/Board/DetailBoard.vue';
+import SignUp from '@/components/Login/SignUp.vue';
+import Login from '@/components/Login/Login.vue';
+import MyPage from '@/components/Login/MyPage.vue';
+import MemberList from '@/components/Login/MemberList.vue';
+import UpdateInfo from '@/components/Login/UpdateInfo.vue';
 
 Vue.use(VueRouter);
 

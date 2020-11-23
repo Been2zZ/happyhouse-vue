@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import http from '../http-common';
+import http from '@/http-common';
 
 export default {
   name: 'SearchBar',
@@ -82,10 +82,21 @@ export default {
           this.errored = true;
         })
         .finally(() => (this.loading = false));
+
+      console.log(input_text);
     },
     getBoardWriter(input_text) {
-      // 작성자 검색
-      console.log(input_text);
+      // 작성자 검색 ----> 작성자 함수 없음
+      http
+        .get('/board/' + input_text)
+        .then((response) => {
+          this.boards = response.data;
+          this.$emit('boardList', this.boards);
+        })
+        .catch(() => {
+          this.errored = true;
+        })
+        .finally(() => (this.loading = false));
     },
   },
 };

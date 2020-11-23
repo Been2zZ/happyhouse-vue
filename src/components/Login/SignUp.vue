@@ -69,7 +69,8 @@
 </template>
 
 <script>
-import http from '../http-common';
+import http from '@/http-common';
+
 export default {
   name: 'SignUp',
   data() {
