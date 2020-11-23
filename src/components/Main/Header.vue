@@ -42,7 +42,6 @@
       <b-navbar-item tag="div" v-if="getAccessToken">
         <!-- 이니셜 첫 글자 -->
         <div style="margin : left;">
-          <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
           <strong>{{ getUserName }} 님 </strong>
         </div>
         <div class="buttons">
@@ -83,7 +82,9 @@ export default {
   },
   methods: {
     onClickLogout() {
-      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+      this.$store
+        .dispatch('LOGOUT')
+        .then(() => this.$router.replace('/').catch(() => {}));
     },
   },
 };
