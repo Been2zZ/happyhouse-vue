@@ -22,7 +22,9 @@
      </tbody>
    </table>
   <br>
+  <div v-if="userId === dboard.id">
     <b-button @click="modBoard(dboard.num)">게시글 수정</b-button>
+  </div>
   </div>
 </template>
 
@@ -36,7 +38,8 @@ export default {
       upHere: false,
       dboard: {},
       loading: true,
-      errored: false
+      errored: false,
+      userId: this.$store.state.userId,
     };
   },
   methods:{

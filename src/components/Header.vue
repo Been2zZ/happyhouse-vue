@@ -25,7 +25,7 @@
         </b-navbar-item>
       </router-link>
       <b-navbar-dropdown label="Info" style="font-weight: bold;">
-        <router-link to="#">
+        <router-link to="/about">
           <b-navbar-item>
             About
           </b-navbar-item>
@@ -43,17 +43,14 @@
         <div class="buttons">
           <!-- <b-nav-item> -->
           <!-- 이니셜 첫 글자 -->
-          <b-avatar
-            variant="primary"
-            v-text="getUserId.charAt(0).toUpperCase()"
-          ></b-avatar>
+          <b-avatar variant="primary" v-text="getUserId.charAt(0).toUpperCase()"></b-avatar>
           {{ getUserName }}({{ getUserId }})님 환영합니다.
           <!-- </b-nav-item> -->
 
-          <router-link class="button is-success" to="/mypage">
+          <router-link class="button is-primary" to="/mypage">
             <strong>My page</strong>
           </router-link>
-          <button class="button is-danger" @click.prevent="onClickLogout">
+          <button class="button is-light" @click.prevent="onClickLogout">
             Log Out
           </button>
         </div>
@@ -87,9 +84,7 @@ export default {
   },
   methods: {
     onClickLogout() {
-      this.$store
-        .dispatch('LOGOUT')
-        .then(() => this.$router.replace('/').catch(() => {}));
+      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
     },
   },
 };
