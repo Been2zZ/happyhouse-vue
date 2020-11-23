@@ -37,6 +37,9 @@
                 가격 : {{ props.row.dealAmount }}만원<br />
                 준공 : {{ props.row.buildYear }}년<br />
               </p>
+              <b-button @click="starApt(props.row.no)" type="is-primary" outlined
+                >관심 매물 등록</b-button
+              >
             </div>
           </div>
         </article>
@@ -46,16 +49,36 @@
 </template>
 
 <script>
+import http from '@/http-common';
+
 export default {
   name: 'AptList',
   data() {
     return {
+      loading: true,
+      errored: false,
       defaultOpenedDetails: [1],
       showDetailIcon: true,
+      submitted: false,
     };
   },
-  components: {
-    // AptListItem,
+  components: {},
+  methods: {
+    starApt(aptno) {
+      http
+        .post('/star/add', {
+          aptNo: aptno,
+          userId: this.$store.state.userId,
+        })
+        .then((response) => {
+          if (response.data.state == 'succ') {
+            alert('관심매물을 등록 하였습니다.');
+          } else {
+            alert('관심매물 등록을 실패 하였습니다.');
+          }
+        });
+      this.submitted = true;
+    },
   },
   props: {
     aptlist: Array,

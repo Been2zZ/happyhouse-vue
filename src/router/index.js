@@ -16,6 +16,7 @@ import Login from '@/components/Login/Login.vue';
 import MyPage from '@/components/Login/MyPage.vue';
 import MemberList from '@/components/Login/MemberList.vue';
 import UpdateInfo from '@/components/Login/UpdateInfo.vue';
+import StarApt from '@/components/Login/StarAptList.vue';
 
 Vue.use(VueRouter);
 
@@ -115,6 +116,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: About,
+  },
+  {
+    path: '/starapt',
+    name: 'StarApt',
+    component: StarApt,
   },
 ];
 

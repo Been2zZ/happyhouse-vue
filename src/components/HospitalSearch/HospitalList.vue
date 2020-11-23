@@ -14,7 +14,7 @@
       aria-page-label="Page"
       aria-current-label="Current page"
     >
-      <b-table-column field="hospitalName" label="병원 목록" sortable v-slot="props">
+      <b-table-column field="hospitalName" label="병원 목록" v-slot="props">
         <template v-if="showDetailIcon">
           {{ props.row.name }}
         </template>

@@ -19,6 +19,11 @@
           <strong>선별 진료소</strong>
         </b-navbar-item>
       </router-link>
+      <router-link v-if="getAccessToken" to="/starapt" style="margin: auto;">
+        <b-navbar-item>
+          <strong>관심 매물 목록</strong>
+        </b-navbar-item>
+      </router-link>
       <router-link to="/board" style="margin: auto;">
         <b-navbar-item>
           <strong>게시판</strong>
@@ -75,6 +80,8 @@ export default {
   data() {
     return {
       isLogin: false,
+      errored: false,
+      loading: true,
     };
   },
   computed: {
@@ -82,9 +89,7 @@ export default {
   },
   methods: {
     onClickLogout() {
-      this.$store
-        .dispatch('LOGOUT')
-        .then(() => this.$router.replace('/').catch(() => {}));
+      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
     },
   },
 };
