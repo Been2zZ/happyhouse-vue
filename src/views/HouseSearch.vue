@@ -3,14 +3,16 @@
     <br />
     <map-search-bar @houseList="searchDong" @dhouseList="searchDongDetail" />
     <br />
-    <b-row>
-      <b-col cols="8">
-        <house-map :aptlist="apts" />
-      </b-col>
-      <b-col cols="4">
-        <apt-list :aptlist="dapts" />
-      </b-col>
-    </b-row>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <house-map :aptlist="apts" />
+        </div>
+        <div class="column">
+          <apt-list :aptlist="dapts" />
+        </div>
+      </div>
+    </div>
   </b-container>
 </template>
 

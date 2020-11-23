@@ -3,14 +3,16 @@
     <br />
     <corona-search-bar @hospital-list="searchHospital" />
     <br />
-    <b-row>
-      <b-col cols="8">
-        <corona-map :hospitalList="hospitalList" />
-      </b-col>
-      <b-col cols="4">
-        <hospital-list :hospitalList="hospitalList" />
-      </b-col>
-    </b-row>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <corona-map :hospitalList="hospitalList" />
+        </div>
+        <div class="column">
+          <hospital-list :hospitalList="hospitalList" />
+        </div>
+      </div>
+    </div>
   </b-container>
 </template>
 

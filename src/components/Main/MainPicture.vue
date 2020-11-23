@@ -1,17 +1,19 @@
 <template>
   <section>
-    <b-carousel :indicator-inside="false">
-      <b-carousel-item style="height: 70%; display: inline;" v-for="(item, i) in 7" :key="i">
-        <span class="image">
-          <img :src="getImg(i)" />
-        </span>
-      </b-carousel-item>
-      <template slot="indicators" slot-scope="props">
-        <span class="al image">
-          <img :src="getImg(props.i)" :title="props.i" />
-        </span>
-      </template>
-    </b-carousel>
+    <div class="container">
+      <b-carousel :indicator-inside="false" animated="fade" interval="4000">
+        <b-carousel-item v-for="(item, i) in 7" :key="i">
+          <span class="image">
+            <img :src="getImg(i)" />
+          </span>
+        </b-carousel-item>
+        <template slot="indicators" slot-scope="props">
+          <span class="al image">
+            <img :src="getImg(props.i)" :title="props.i" />
+          </span>
+        </template>
+      </b-carousel>
+    </div>
   </section>
 </template>
 
