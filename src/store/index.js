@@ -9,6 +9,7 @@ export default new Vuex.Store({
     accessToken: localStorage.getItem('accessToken') || null,
     userId: localStorage.getItem('userId') || '',
     userName: localStorage.getItem('userName') || '',
+    userType: localStorage.getItem('userType') || '',
   },
   getters: {
     getAccessToken(state) {
@@ -23,15 +24,20 @@ export default new Vuex.Store({
     getUserName(state) {
       return state.userName;
     },
+    getUserType(state) {
+      return state.userType;
+    },
   },
   mutations: {
     LOGIN(state, payload) {
       state.accessToken = payload['auth-token'];
       state.userId = payload['user-id'];
       state.userName = payload['user-name'];
+      state.userType = payload['user-type'];
       localStorage.accessToken = payload['auth-token'];
       localStorage.userId = payload['user-id'];
       localStorage.userName = payload['user-name'];
+      localStorage.userType = payload['user-type'];
     },
     LOGOUT(state) {
       state.accessToken = null;
