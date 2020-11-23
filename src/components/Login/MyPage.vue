@@ -2,7 +2,6 @@
   <div class="container" v-if="user">
     <h1 class="title">My Page</h1>
     <h1 class="subtitle">내 정보 확인페이지입니다.</h1>
-
     <div class="columns">
       <div class="column is-3"></div>
       <div class="column is-6">

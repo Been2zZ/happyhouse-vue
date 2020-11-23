@@ -1,7 +1,17 @@
 <template>
   <section class="container">
-    <b-collapse aria-id="contentIdForA11y2" class="panel" animation="slide" v-model="isOpen">
-      <div slot="trigger" class="panel-heading" role="button" aria-controls="contentIdForA11y2">
+    <b-collapse
+      aria-id="contentIdForA11y2"
+      class="panel"
+      animation="slide"
+      v-model="isOpen"
+    >
+      <div
+        slot="trigger"
+        class="panel-heading"
+        role="button"
+        aria-controls="contentIdForA11y2"
+      >
         <strong>{{ dboard.title }}</strong>
       </div>
       <p class="panel-tabs">
@@ -19,37 +29,11 @@
     </b-collapse>
 
     <div v-if="userId === dboard.id">
-      <b-button class="button is-primary" @click="modBoard(dboard.num)">게시글 수정</b-button>
+      <b-button class="button is-primary" @click="modBoard(dboard.num)"
+        >게시글 수정</b-button
+      >
     </div>
   </section>
-
-  <!-- <div id="d">
-    <table>
-     <col width="10%"><col width="20%"><col width="20%">
-     <thead>
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>아이디</th>
-        <th>내용</th>
-        <th>작성시간</th>
-      </tr>
-     </thead>
-     <tbody>
-       <tr>
-          <td v-html="dboard.num"></td>
-          <td v-html="dboard.title"></td>
-          <td v-html="dboard.id"></td>
-          <td v-html="dboard.content"></td>
-          <td v-html="dboard.date"></td>
-       </tr>
-     </tbody>
-   </table>
-  <br>
-  <div v-if="userId === dboard.id">
-    <b-button class="button is-primary" @click="modBoard(dboard.num)">게시글 수정</b-button>
-  </div>
-  </div> -->
 </template>
 
 <script>
@@ -69,7 +53,6 @@ export default {
   },
   methods: {
     modBoard(num) {
-      alert(num + '번 수정합니다.');
       this.$router.push('/mod/' + num);
     },
   },

@@ -96,7 +96,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - ~~선별진료소~~
 - ~~게시글 상세보기~~
 - ~~마이페이지~~
-- 버튼 간격
+- ~~버튼 간격~~
 
 ====================
 
