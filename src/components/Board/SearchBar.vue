@@ -77,6 +77,9 @@ export default {
         .then((response) => {
           this.boards = response.data;
           this.$emit('boardList', this.boards);
+          if (this.boards.length == 0) {
+            alert('검색어에 해당하는 제목의 글이 존재하지 않습니다.');
+          }
         })
         .catch(() => {
           this.errored = true;

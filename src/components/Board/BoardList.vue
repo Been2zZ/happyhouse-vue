@@ -21,19 +21,29 @@
             <b-th>작성시간</b-th>
           </b-tr>
         </b-thead>
-        <div v-if="boardList === null">
-          <b-tbody>
-            <!-- 게시글 없을 때 -->
-            <!-- <b-tr v-for="board in boardList" :key="board.num">
-              <b-td v-html="board.num"></b-td>
-              <b-td v-html="board.title" @click="detailBoard(board.num)">
-              </b-td>
-              <b-td v-html="board.id"></b-td>
-              <b-td v-html="board.date"></b-td>
-            </b-tr> -->
+        <div v-if="boardList.length === 0">
+          <b-tbody >
+            <b-tr v-for="(board, index) in allBoardList" :key="board.num">
+              <!-- type 1: admin / 0: user -->
+              <b-td>{{index + 1}}</b-td>
+              <div v-if="board.type === 1">
+                <b-td
+                  @click="detailBoard(board.num)"
+                ><strong>[공지]{{board.title}}</strong>
+                </b-td>
+                <b-td v-html="board.id"></b-td>
+                <b-td v-html="board.date"></b-td>
+              </div>
+              <div v-if="board.type === 0">
+                <b-td v-html="board.title" @click="detailBoard(board.num)">
+                </b-td>
+                <b-td v-html="board.id"></b-td>
+                <b-td v-html="board.date"></b-td>
+              </div>
+            </b-tr>
           </b-tbody>
         </div>
-        <div v-if="boardList !== null">
+        <div v-if="boardList.length !== 0">
           <b-tbody >
             <b-tr v-for="(board, index) in boardList" :key="board.num">
               <!-- type 1: admin / 0: user -->
@@ -66,14 +76,14 @@ import http from '@/http-common';
 
 export default {
   name: "BoardList",
-
+  props: ['boardList'],
   data() {
     return {
       upHere: false,
       loading: true,
       errored: false,
       boards: [],
-      boardList : [],
+      allBoardList : [],
       count: 1,
     };
   },
@@ -85,7 +95,7 @@ export default {
     retrieveBoards() {
       http
         .get("/findAllBoards")
-        .then((response) => (this.boardList = response.data))
+        .then((response) => (this.allBoardList = response.data))
         .catch(() => {
           this.errored = true;
         })
