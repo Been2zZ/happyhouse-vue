@@ -1,35 +1,30 @@
 <template>
   <div class="container">
-    <b-row class="my-1">
-      <b-col sm="2">
-        <label for="input-default">제목</label>
-      </b-col>
-      <b-col sm="9">
-        <b-form-input
-          id="_title"
-          name="title"
-          v-model="btitle"
-          placeholder="제목을 입력하세요.."
-        ></b-form-input>
-      </b-col>
-    </b-row>
-    <b-row class="mt-2">
-      <b-col sm="2">
-        <label for="textarea-default">내용</label>
-      </b-col>
-      <b-col sm="9">
-        <b-form-textarea
-          id="_content"
-          name="content"
-          v-model="bcontent"
-          placeholder="내용을 입력하세요.."
-          rows="8"
-        >
-        </b-form-textarea>
-      </b-col>
-    </b-row>
+    <b-field label="제목">
+      <b-input id="_title" name="title" v-model="btitle" required placeholder="제목을 입력하세요..">
+      </b-input>
+    </b-field>
 
-    <b-button @click="addBoard()" type="submit" name="button" variant="primary">작성</b-button>
+    <b-field label="내용">
+      <b-input
+        type="textarea"
+        id="_content"
+        name="content"
+        v-model="bcontent"
+        placeholder="내용을 입력하세요.."
+        required
+      >
+      </b-input>
+    </b-field>
+
+    <b-button
+      @click="addBoard()"
+      class="button is-primary"
+      type="submit"
+      name="button"
+      variant="primary"
+      >작성</b-button
+    >
   </div>
 </template>
 

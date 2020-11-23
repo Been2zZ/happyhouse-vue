@@ -1,5 +1,29 @@
 <template>
-  <div id="d">
+  <section class="container">
+    <b-collapse aria-id="contentIdForA11y2" class="panel" animation="slide" v-model="isOpen">
+      <div slot="trigger" class="panel-heading" role="button" aria-controls="contentIdForA11y2">
+        <strong>{{ dboard.title }}</strong>
+      </div>
+      <p class="panel-tabs">
+        <a class="is-active">내용</a>
+      </p>
+      <div class="panel-block">
+        <div style="width:10%;">
+          <strong>{{ dboard.date }}</strong
+          ><br />
+          작성자 :
+          <strong>{{ dboard.id }}</strong>
+        </div>
+        <div style="width:90%;">{{ dboard.content }}</div>
+      </div>
+    </b-collapse>
+
+    <div v-if="userId === dboard.id">
+      <b-button class="button is-primary" @click="modBoard(dboard.num)">게시글 수정</b-button>
+    </div>
+  </section>
+
+  <!-- <div id="d">
     <table>
      <col width="10%"><col width="20%"><col width="20%">
      <thead>
@@ -23,16 +47,16 @@
    </table>
   <br>
   <div v-if="userId === dboard.id">
-    <b-button @click="modBoard(dboard.num)">게시글 수정</b-button>
+    <b-button class="button is-primary" @click="modBoard(dboard.num)">게시글 수정</b-button>
   </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
 import http from '@/http-common';
 
 export default {
-  name: "DetailBoard",
+  name: 'DetailBoard',
   props: ['num'],
   data() {
     return {
@@ -43,26 +67,28 @@ export default {
       userId: this.$store.state.userId,
     };
   },
-  methods:{
-    modBoard(num){
-       alert(num+"번 수정합니다.");
-       this.$router.push('/mod/' + num);
+  methods: {
+    modBoard(num) {
+      alert(num + '번 수정합니다.');
+      this.$router.push('/mod/' + num);
     },
   },
   mounted() {
     http
-    .get('/detailboard/'+this.num)
-    .then(response => (this.dboard = response.data))
-    .catch(() => {
-      this.errored = true
-    })
-    .finally(() => this.loading = false);
+      .get('/detailboard/' + this.num)
+      .then((response) => (this.dboard = response.data))
+      .catch(() => {
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
   },
-}
+};
 </script>
 
 <style scoped>
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #bcbcbc;
   text-align: center;
 }
@@ -78,7 +104,7 @@ thead {
 }
 #d {
   width: 90%;
-  margin:0 auto; 
+  margin: 0 auto;
   padding-top: 30px;
 }
 </style>
