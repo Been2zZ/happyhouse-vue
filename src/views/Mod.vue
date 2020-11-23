@@ -1,37 +1,26 @@
 <template>
-  <div>
-    <b-row class="my-1">
-      <b-col sm="2">
-        <label for="input-default">제목</label>
-      </b-col>
-      <b-col sm="9">
-        <b-form-input
-          id="_title"
-          name="title"
-          v-model="btitle"
-          placeholder="제목을 입력하세요.."
-        ></b-form-input>
-      </b-col>
-    </b-row>
+  <section class="container">
+    <b-field label="제목">
+      <b-input id="_title" name="title" v-model="btitle" placeholder="제목을 입력하세요.." required>
+      </b-input>
+    </b-field>
 
-    <b-row class="mt-2">
-      <b-col sm="2">
-        <label for="textarea-default">내용</label>
-      </b-col>
-      <b-col sm="9">
-        <b-form-textarea
-          id="_content"
-          name="content"
-          v-model="bcontent"
-          placeholder="내용을 입력하세요.."
-          rows="8"
-        >
-        </b-form-textarea>
-      </b-col>
-    </b-row>
+    <b-field label="내용">
+      <b-input
+        type="textarea"
+        id="_content"
+        name="content"
+        v-model="bcontent"
+        placeholder="내용을 입력하세요.."
+        required
+      >
+      </b-input>
+    </b-field>
 
-    <b-button @click="modBoard()" type="submit" name="button" variant="primary">수정</b-button>
-  </div>
+    <b-button @click="modBoard()" class="is-primary" type="submit" name="button" variant="primary"
+      >수정</b-button
+    >
+  </section>
 </template>
 
 <script>
@@ -99,10 +88,6 @@ export default {
       this.bname = '';
       this.bpw = '';
       this.bcontent = '';
-    },
-    modifyBoard(num) {
-      alert(num + '번 수정합니다.');
-      this.$router.push('/mod/' + num);
     },
   },
 };
