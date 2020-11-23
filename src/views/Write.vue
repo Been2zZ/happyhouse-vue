@@ -50,6 +50,8 @@
 
 <script>
 import http from '../http-common';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Write',
   data() {
@@ -63,6 +65,9 @@ export default {
       bcontent: '',
       submitted: false,
     };
+  },
+  computed: {
+    ...mapGetters(['getAccessToken', 'getUserId', 'getUserType']),
   },
   mounted() {},
   methods: {
@@ -88,10 +93,9 @@ export default {
         .post('/addBoard', {
           title: this.btitle,
           content: this.bcontent,
-          // id, date, type (0: admin 1: user)
-          // id:
-          // date:
-          // type:
+          // id, type (0: admin 1: user)
+          // id: getUserId(),
+          // type: getUserType(),
         })
         .then((response) => {
           if (response.data.state == 'succ') {

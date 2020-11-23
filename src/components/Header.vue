@@ -50,20 +50,20 @@
           <router-link class="button is-primary" to="/mypage">
             <strong>My page</strong>
           </router-link>
-          <a class="button is-light" @click.prevent="onClickLogout">
+          <button class="button is-light" @click.prevent="onClickLogout">
             Log Out
-          </a>
+          </button>
         </div>
       </b-navbar-item>
 
       <b-navbar-item tag="div" v-else>
         <div class="buttons">
-          <a class="button is-primary" href="/signup">
+          <router-link class="button is-primary" to="/signup">
             <strong>Sign up</strong>
-          </a>
-          <a class="button is-light" href="/login">
+          </router-link>
+          <router-link class="button is-light" to="/login">
             Log in
-          </a>
+          </router-link>
         </div>
       </b-navbar-item>
     </template>

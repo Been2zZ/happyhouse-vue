@@ -19,7 +19,6 @@ Vue.use(VueRouter);
 
 const requireAuth = () => (to, from, next) => {
   const nextRoute = to.path;
-
   if (store.getters.getAccessToken) {
     return next();
   } else next('/login' + nextRoute);
@@ -43,6 +42,7 @@ const routes = [
     path: '/board',
     name: 'Board',
     component: Board,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/housesearch',
@@ -58,17 +58,20 @@ const routes = [
     path: '/write',
     name: 'Write',
     component: Write,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/mod/:num',
     name: 'Mod',
     component: Mod,
+    beforeEnter: requireAuth(),
     props: true,
   },
   {
     path: '/detailboard/:num',
     name: 'DetailBoard',
     component: DetailBoard,
+    beforeEnter: requireAuth(),
     props: true,
   },
   {
@@ -97,12 +100,14 @@ const routes = [
     path: '/memberlist',
     name: 'MemberList',
     component: MemberList,
+    beforeEnter: requireAuth(),
   },
   {
-    path: '/updateinfo/:user',
+    path: '/updateinfo',
     name: 'UpdateInfo',
     component: UpdateInfo,
     props: true,
+    beforeEnter: requireAuth(),
   },
   {
     path: '/about',
