@@ -2,112 +2,125 @@
   <div>
     <div id="b">
       <router-link to="/write" style="float: right">
-        <b-button type="is-primary" outlined id="button">게시글 등록</b-button
-        ><br />
+        <b-button type="is-primary" outlined id="button">게시글 등록</b-button><br />
       </router-link>
     </div>
 
     <div>
-      <br />
-      <b-table>
-        <col width="20%" />
-        <col width="40%" />
-        <col width="20%" />
-        <b-thead>
-          <b-tr>
-            <b-th>번호</b-th>
-            <b-th>제목</b-th>
-            <b-th>아이디</b-th>
-            <b-th>작성시간</b-th>
-          </b-tr>
-        </b-thead>
-        <div v-if="boardList.length === 0">
-          <b-tbody >
-            <b-tr v-for="(board, index) in allBoardList" :key="board.num">
-              <!-- type 1: admin / 0: user -->
-              <b-td>{{index + 1}}</b-td>
-              <div v-if="board.type === 1">
-                <b-td
-                  @click="detailBoard(board.num)"
-                ><strong>[공지]{{board.title}}</strong>
-                </b-td>
-                <b-td v-html="board.id"></b-td>
-                <b-td v-html="board.date"></b-td>
-              </div>
-              <div v-if="board.type === 0">
-                <b-td v-html="board.title" @click="detailBoard(board.num)">
-                </b-td>
-                <b-td v-html="board.id"></b-td>
-                <b-td v-html="board.date"></b-td>
-              </div>
-            </b-tr>
-          </b-tbody>
-        </div>
-        <div v-if="boardList.length !== 0">
-          <b-tbody >
-            <b-tr v-for="(board, index) in boardList" :key="board.num">
-              <!-- type 1: admin / 0: user -->
-              <b-td>{{index + 1}}</b-td>
-              <div v-if="board.type === 1">
-                <b-td
-                  @click="detailBoard(board.num)"
-                ><strong>[공지]{{board.title}}</strong>
-                </b-td>
-                <b-td v-html="board.id"></b-td>
-                <b-td v-html="board.date"></b-td>
-              </div>
-              <div v-if="board.type === 0">
-                <b-td v-html="board.title" @click="detailBoard(board.num)">
-                </b-td>
-                <b-td v-html="board.id"></b-td>
-                <b-td v-html="board.date"></b-td>
-              </div>
-            </b-tr>
-          </b-tbody>
-        </div>
-      </b-table>
+      <div v-if="boardList.length === 0">
+        <b-table
+          :data="allBoardList"
+          :key="index"
+          ref="table"
+          paginated
+          per-page="7"
+          aria-next-label="Next page"
+          aria-previous-label="Previous page"
+          aria-page-label="Page"
+          aria-current-label="Current page"
+        >
+          <b-table-column field="num" label="번호" width="100" numeric centered v-slot="props">
+            {{ props.index + 1 }}
+          </b-table-column>
+          <b-table-column field="title" label="제목" numeric centered v-slot="props">
+            <div v-if="props.row.type === 1">
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  <strong>[공지] {{ props.row.title }}</strong>
+                </a>
+              </b-tooltip>
+            </div>
+            <div v-if="props.row.type === 0">
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  {{ props.row.title }}
+                </a>
+              </b-tooltip>
+            </div>
+          </b-table-column>
+          <b-table-column field="id" label="아이디" width="100" numeric centered v-slot="props">
+            {{ props.row.id }}
+          </b-table-column>
+          <b-table-column field="date" label="작성시간" width="280" numeric centered v-slot="props">
+            {{ props.row.date }}
+          </b-table-column>
+        </b-table>
+      </div>
+      <!-- 검색 -->
+      <div v-if="boardList.length !== 0">
+        <b-table
+          :data="boardList"
+          ref="table"
+          :key="index"
+          paginated
+          per-page="7"
+          aria-next-label="Next page"
+          aria-previous-label="Previous page"
+          aria-page-label="Page"
+          aria-current-label="Current page"
+        >
+          <b-table-column field="num" label="번호" width="100" numeric centered v-slot="props">
+            {{ props.index + 1 }}
+          </b-table-column>
+          <b-table-column field="title" label="제목" numeric centered v-slot="props">
+            <div v-if="props.row.type === 1">
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  <strong>[공지] {{ props.row.title }}</strong>
+                </a>
+              </b-tooltip>
+            </div>
+            <div v-if="props.row.type === 0">
+              <b-tooltip label="상세 보기" position="is-right">
+                <a @click="detailBoard(props.row.num)">
+                  {{ props.row.title }}
+                </a>
+              </b-tooltip>
+            </div>
+          </b-table-column>
+          <b-table-column field="id" label="아이디" width="100" numeric centered v-slot="props">
+            {{ props.row.id }}
+          </b-table-column>
+          <b-table-column field="date" label="작성시간" width="280" numeric centered v-slot="props">
+            {{ props.row.date }}
+          </b-table-column>
+        </b-table>
+      </div>
     </div>
   </div>
 </template>
-
 
 <script>
 import http from '@/http-common';
 
 export default {
-  name: "BoardList",
+  name: 'BoardList',
   props: ['boardList'],
   data() {
     return {
       upHere: false,
       loading: true,
       errored: false,
+      userId: this.$store.state.userId,
       boards: [],
-      allBoardList : [],
-      count: 1,
+      allBoardList: [],
     };
   },
   methods: {
     detailBoard(num) {
-      alert(num + "번 글입니다.");
-      this.$router.push("/detailboard/" + num);
+      this.$router.push('/detailboard/' + num);
     },
     retrieveBoards() {
       http
-        .get("/findAllBoards")
+        .get('/findAllBoards')
         .then((response) => (this.allBoardList = response.data))
         .catch(() => {
           this.errored = true;
         })
         .finally(() => (this.loading = false));
     },
-    increment() {
-      // this.count++;
-      return this.count++;
-    },
   },
-  computed: {
-  },
+  computed: {},
   mounted() {
     this.retrieveBoards();
   },
@@ -115,19 +128,6 @@ export default {
 </script>
 
 <style scoped>
-/* table, th, td {
-  border: 1px solid #bcbcbc;
-  text-align: center;
-}
-table {
-  width: 100%;
-  height: 100%;
-  align-self: center;
-}
-thead {
-  font-size: x-large;
-  text-align: center;
-} */
 #button {
   float: right;
 }
