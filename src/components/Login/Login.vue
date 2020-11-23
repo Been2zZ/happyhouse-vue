@@ -1,6 +1,23 @@
 <template>
   <section>
-    <b-form>
+    <b-field label="아이디">
+      <b-input v-model="user.id" required placeholder="아이디를 입력하세요."> </b-input>
+    </b-field>
+
+    <b-field label="비밀번호">
+      <b-input
+        type="password"
+        v-model="user.pw"
+        required
+        @keypress.enter="login"
+        placeholder="비밀번호를 입력하세요."
+        password-reveal
+      >
+      </b-input>
+    </b-field>
+    <b-button type="is-primary" class="m-1" @click="login">로그인</b-button>
+
+    <!-- <b-form>
       <b-form-group label="아이디:" label-for="id">
         <b-form-input
           id="id"
@@ -20,7 +37,7 @@
         ></b-form-input>
         <b-button type="is-primary" class="m-1" @click="login">로그인</b-button>
       </b-form-group>
-    </b-form>
+    </b-form> -->
   </section>
 </template>
 

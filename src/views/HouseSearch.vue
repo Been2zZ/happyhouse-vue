@@ -1,5 +1,5 @@
 <template>
-  <b-container class="bv-example-row">
+  <div>
     <br />
     <map-search-bar @houseList="searchDong" @dhouseList="searchDongDetail" />
     <br />
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>

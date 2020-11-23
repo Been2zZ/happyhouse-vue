@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <b-row class="my-1">
       <b-col sm="2">
         <label for="input-default">제목</label>

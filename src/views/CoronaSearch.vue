@@ -1,5 +1,5 @@
 <template>
-  <b-container class="bv-example-row">
+  <div>
     <br />
     <corona-search-bar @hospital-list="searchHospital" />
     <br />
@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     searchHospital: function(hospitals) {
-      console.log(hospitals);
+      // console.log(hospitals);
       this.hospitalList = hospitals;
     },
   },

@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <div id="b">
-      <router-link to="/write" style="float: right">
-        <b-button type="is-primary" outlined id="button">게시글 등록</b-button><br />
-      </router-link>
+      <!-- <router-link to="/write" style="float: right"> -->
+      <b-button type="is-primary" @click="write" outlined id="button">게시글 등록</b-button><br />
+      <!-- </router-link> -->
     </div>
 
     <div>
@@ -118,6 +118,9 @@ export default {
           this.errored = true;
         })
         .finally(() => (this.loading = false));
+    },
+    write() {
+      this.$router.push('/write');
     },
   },
   computed: {},
