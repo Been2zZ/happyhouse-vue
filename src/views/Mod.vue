@@ -33,7 +33,6 @@ export default {
       info: null,
       loading: true,
       errored: false,
-      dboard: {},
       btitle: '',
       bname: '',
       bnum: '',
@@ -42,15 +41,7 @@ export default {
       submitted: false,
     };
   },
-  mounted() {
-    http
-      .get('/mod/' + this.num)
-      .then((response) => (this.dboard = response.data))
-      .catch(() => {
-        this.errored = true;
-      })
-      .finally(() => (this.loading = false));
-  },
+  mounted() {},
   methods: {
     modBoard() {
       if (this.btitle == '') {
