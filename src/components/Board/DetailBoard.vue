@@ -1,30 +1,33 @@
 <template>
-  <section class="container">
-    <b-collapse
-      aria-id="contentIdForA11y2"
-      class="panel"
-      animation="slide"
-      v-model="isOpen"
-    >
+  <section class="column is-half is-offset-one-quarter">
+    <b-collapse aria-id="contentIdForA11y2" class="panel" animation="slide">
       <div
         slot="trigger"
         class="panel-heading"
         role="button"
         aria-controls="contentIdForA11y2"
       >
-        <strong>{{ dboard.title }}</strong>
+        <strong type="is-large">{{ dboard.title }}</strong>
       </div>
-      <p class="panel-tabs">
-        <a class="is-active">내용</a>
-      </p>
-      <div class="panel-block">
-        <div style="width:10%;">
-          <strong>{{ dboard.date }}</strong
-          ><br />
-          작성자 :
-          <strong>{{ dboard.id }}</strong>
+      <div class="columns">
+        <div class="column is-2">작성 시간</div>
+        <div class="column is-10">
+          <pre>{{ dboard.date }}</pre>
         </div>
-        <div style="width:90%;">{{ dboard.content }}</div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-2">작성자</div>
+        <div class="column is-10">
+          <pre>{{ dboard.id }}</pre>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-2">내용</div>
+        <div class="column is-10">
+          <pre class="text-left">{{ dboard.content }}</pre>
+        </div>
       </div>
     </b-collapse>
 
@@ -41,19 +44,23 @@ import http from '@/http-common';
 
 export default {
   name: 'DetailBoard',
-  props: ['num'],
+  props: ['dboard', 'num'],
   data() {
     return {
       upHere: false,
-      dboard: {},
+      // dboard: {},
       loading: true,
       errored: false,
       userId: this.$store.state.userId,
     };
   },
   methods: {
-    modBoard(num) {
-      this.$router.push('/mod/' + num);
+    modBoard() {
+      this.$router.push({
+        name: 'Mod',
+        params: { dboard: this.dboard },
+      });
+      // this.$router.push({name: 'Query', query: {name: 'cat', age: 3}})
     },
   },
   mounted() {
@@ -69,25 +76,13 @@ export default {
 </script>
 
 <style scoped>
-table,
-th,
-td {
-  border: 1px solid #bcbcbc;
-  text-align: center;
-}
-table {
-  width: 100%;
-  /* width: "auto"; */
-  height: 100%;
-  align-self: center;
-}
-thead {
-  font-size: x-large;
-  text-align: center;
-}
-#d {
-  width: 90%;
-  margin: 0 auto;
-  padding-top: 30px;
+pre {
+  text-align: left;
+  margin: 0 1rem;
+  white-space: pre-wrap;
+  background: none;
+  font-family: auto;
+  font-size: 1rem;
+  padding: 0;
 }
 </style>

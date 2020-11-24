@@ -1,10 +1,10 @@
 <template>
-  <b-container class="bv-example-row">
+  <div>
     <br />
     <search-bar @boardList="searchboardList" />
     <br />
     <board-list :boardList="boardList" />
-  </b-container>
+  </div>
 </template>
 
 <script>

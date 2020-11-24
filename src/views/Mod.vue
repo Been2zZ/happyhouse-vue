@@ -1,7 +1,13 @@
 <template>
   <section class="container">
     <b-field label="제목">
-      <b-input id="_title" name="title" v-model="btitle" placeholder="제목을 입력하세요.." required>
+      <b-input
+        id="_title"
+        name="title"
+        v-model="dboard.title"
+        placeholder="제목을 입력하세요.."
+        required
+      >
       </b-input>
     </b-field>
 
@@ -10,14 +16,19 @@
         type="textarea"
         id="_content"
         name="content"
-        v-model="bcontent"
+        v-model="dboard.content"
         placeholder="내용을 입력하세요.."
         required
       >
       </b-input>
     </b-field>
 
-    <b-button @click="modBoard()" class="is-primary" type="submit" name="button" variant="primary"
+    <b-button
+      @click="modBoard()"
+      class="is-primary"
+      type="submit"
+      name="button"
+      variant="primary"
       >수정</b-button
     >
   </section>
@@ -27,37 +38,32 @@
 import http from '../http-common';
 export default {
   name: 'Mod',
-  props: ['num'],
+  props: ['dboard'],
   data() {
     return {
       info: null,
       loading: true,
       errored: false,
-      btitle: '',
-      bname: '',
-      bnum: '',
-      bpw: '',
-      bcontent: '',
       submitted: false,
     };
   },
   mounted() {},
   methods: {
     modBoard() {
-      if (this.btitle == '') {
+      if (this.dboard.title == '') {
         alert('제목을 입력하세요.');
         return;
       }
-      if (this.bcontent == '') {
+      if (this.dboard.title == '') {
         alert('내용을 입력하세요.');
         return;
       }
 
       http
         .post('/modifyBoard', {
-          num: this.num,
-          title: this.btitle,
-          content: this.bcontent,
+          num: this.dboard.num,
+          title: this.dboard.title,
+          content: this.dboard.content,
         })
         .then((response) => {
           if (response.data.state == 'succ') {
@@ -68,17 +74,6 @@ export default {
           }
         });
       this.submitted = true;
-      console.log(this.num);
-    },
-    newCustomer() {
-      (this.submitted = false),
-        (this.info = null),
-        (this.loading = true),
-        (this.errored = false),
-        (this.btitle = '');
-      this.bname = '';
-      this.bpw = '';
-      this.bcontent = '';
     },
   },
 };
