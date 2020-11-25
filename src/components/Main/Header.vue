@@ -35,7 +35,7 @@
             About
           </b-navbar-item>
         </router-link>
-        <a target="_blank" href="https://choihwan2.github.io/">
+        <a target="_blank" href="https://github.com/Been2zZ/happyhouse-vue">
           <b-navbar-item>
             Contact
           </b-navbar-item>
