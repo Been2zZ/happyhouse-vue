@@ -40,12 +40,10 @@
         {{ props.row.addressDetail }}
       </b-table-column>
 
-      <b-table-column field="pw" label="비밀번호" v-slot="props">
-        {{ props.row.pw }}
-      </b-table-column>
-
       <b-table-column field="del" label="탈퇴" v-slot="props">
-        <b-button type="is-danger" outlined @click="deleteMember(props.row.id)">탈퇴</b-button>
+        <b-button type="is-danger" outlined @click="deleteMember(props.row.id)"
+          >탈퇴</b-button
+        >
       </b-table-column>
     </b-table>
   </section>

@@ -23,7 +23,7 @@
               즐거운 개발을 위해 언제나 노력합니다.<br />
               <a target="_blank" href="https://github.com/choihwan2">#github</a>
               <br />
-              <time datetime="2016-1-1">11:09 PM - 24 Dec 2020</time>
+              <time datetime="2016-1-1">24 July 1993</time>
             </div>
           </div>
         </div>

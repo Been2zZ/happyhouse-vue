@@ -35,11 +35,11 @@
             About
           </b-navbar-item>
         </router-link>
-        <router-link to="#">
+        <a target="_blank" href="https://choihwan2.github.io/">
           <b-navbar-item>
             Contact
           </b-navbar-item>
-        </router-link>
+        </a>
       </b-navbar-dropdown>
     </template>
 
@@ -89,7 +89,9 @@ export default {
   },
   methods: {
     onClickLogout() {
-      this.$store.dispatch('LOGOUT').then(() => this.$router.replace('/').catch(() => {}));
+      this.$store
+        .dispatch('LOGOUT')
+        .then(() => this.$router.replace('/').catch(() => {}));
     },
   },
 };
